@@ -1,0 +1,365 @@
+
+# NUEVO ARCHIVO.
+
+snippet npyf "nuevo archivo python" b
+# -*- coding: utf-8 -*-
+####################################################
+# Parte del Proyecto LibreGOB: http://libregob.org #
+# Licencia AGPL-v3                                 #
+####################################################
+
+$1
+
+
+$0
+endsnippet
+
+
+# MODELS
+
+# Inherit Model
+snippet imm "heredar un modelo"
+class $1(models.Model)
+    _inherit = '${1/([a-z]*)([A-Z]+)/(?1:$1.)\L$2\E/g}'
+
+    $2
+endsnippet
+
+# Inherit TrascientModel
+snippet imt "heredar un wizard"
+class $1(models.TrascientModel)
+    _inherit = '${1/([a-z]*)([A-Z]+)/(?1:$1.)\L$2\E/g}'
+
+    $0
+endsnippet
+
+# New Model
+snippet nmm "nuevo modelo"
+class $1(models.Model)
+    _name = '${1/([a-z]*)([A-Z]+)/(?1:$1.)\L$2\E/g}'
+    _description = '${1/(.)([A-Z]+)/(?1:$1)(?1: $2)/g}' 
+
+    $0
+endsnippet
+
+# New TrascientModel
+snippet nmt "nuevo wizard"
+class $1(models.TrascientModel)
+    _name = '${1/([a-z]*)([A-Z]+)/(?1:$1.)\L$2\E/g}' 
+    _description = '${1/(.)([A-Z]+)/(?1:$1)(?1: $2)/g}' 
+
+    $0
+endsnippet
+
+# FIELDS
+
+# Char
+snippet fc "fields.Char" b
+$1 = fields.Char(string='${1/(^.)|([_])/\u$1(?2: )/g}', $2)
+$0
+endsnippet
+
+# Text 
+snippet ft "fields.Text" b
+$1 = fields.Text(string='${1/(^.)|([_])/\u$1(?2: )/g}', $2)
+$0
+endsnippet
+
+# Integer
+snippet fi "fields.Integer" b
+$1 = fields.Integer(string='${1/(^.)|([_])/\u$1(?2: )/g}', $2)
+$0
+endsnippet
+
+# Float 
+snippet ff "fields.Float" b
+$1 = fields.Float(string='${1/(^.)|([_])/\u$1(?2: )/g}', $2)
+$0
+endsnippet
+
+# Boolean
+snippet fbo "fields.Boolean" b
+$1 = fields.Boolean(string='${1/(^.)|([_])/\u$1(?2: )/g}', $2)
+$0
+endsnippet
+
+# Binary
+snippet fbi "fields.Binary" b
+$1 = fields.Binary(string='${1/(^.)|([_])/\u$1(?2: )/g}', $2)
+$0
+endsnippet
+
+# Date
+snippet fd "fields.Date" b
+$1 = fields.Date(string='${1/(^.)|([_])/\u$1(?2: )/g}', $2)
+$0
+endsnippet
+
+# Datetime
+snippet fdt "fields.Datetime" b
+$1 = fields.Datetime(string='${1/(^.)|([_])/\u$1(?2: )/g}', $2)
+$0
+endsnippet
+
+# Many2one 
+snippet fm2o "fields.Many2one" b
+$1_id = fields.Many2one('$2', string='${1/(^.)|([_])/\u$1(?2: )/g}', $3)
+$0
+endsnippet
+
+# One2many 
+snippet fo2m "fields.One2many" b
+$1_ids = fields.One2many('$2', '$3_id', string='${1/(^.)|([_])/\u$1(?2: )/g}s', $4)
+$0
+endsnippet
+
+# Many2many 
+snippet fm2m "fields.Many2many" b
+$1_ids = fields.Many2many('$2', '$1_$3_rel', '$3_ids', '$1_ids', string='${1/(^.)|([_])/\u$1(?2: )/g}s', $5)
+$3_ids = fields.Many2many('$4', '$1_$3_rel', '$1_ids', '$3_ids', string='${3/(^.)|([_])/\u$1(?2: )/g}'s, $5)
+$0
+endsnippet
+
+# Selection
+snippet fs "fields.selection" b
+$1 = fields.Selection([
+        ('$2','${2/(^.)|([_])/\u$1(?2: )/g}'),
+        ('$3','${3/(^.)|([_])/\u$1(?2: )/g}'),
+    ], default="$2",
+    string='${1/(^.)|([_])/\u$1(?2: )/g}',
+    $4)
+$0
+endsnippet
+
+# FIELD OPTIONS
+
+# Field invisible
+snippet it "invisible=True"
+invisible=True, 
+endsnippet
+
+snippet if "invisible=False"
+invisible=False, 
+endsnippet
+
+# Field readonly
+snippet rot "readonly=True"
+readonly=True, 
+endsnippet
+
+snippet rof "readonly=False"
+readonly=False, 
+endsnippet
+
+# Field copy
+snippet ct "copy=True"
+copy=True, 
+endsnippet
+
+snippet cf "copy=False"
+copy=False, 
+endsnippet
+
+# Field store
+snippet st "store=True"
+store=True, 
+endsnippet
+
+snippet sf "store=False"
+store=False, 
+endsnippet
+
+# Field index
+snippet ixt "index=True"
+index=True, 
+endsnippet
+
+snippet ixf "index=False"
+index=False, 
+endsnippet
+
+# Field ondelete
+snippet odr "ondelete='restrict'"
+ondelete="restrict", 
+endsnippet
+
+snippet odsn "ondelete='set null'"
+ondelete="set null", 
+endsnippet
+
+snippet odc "ondelete='cascade'"
+ondelete="cascade", 
+endsnippet
+
+# Help
+snippet h1 "help con una línea"
+help="$1", 
+endsnippet
+
+snippet h2 "help con dos líneas"
+help=" * $1.\n"
+     " * $2.\n"
+endsnippet
+
+snippet h3 "help con tres líneas"
+help=" * $1.\n"
+     " * $2.\n"
+     " * $3.\n"
+endsnippet
+
+# Domain
+snippet domf "dominio falso"
+domain=[('$1', '=', False)], 
+endsnippet
+
+snippet domt "dominio verdadero"
+domain=[('$1', '!=', False)], 
+endsnippet
+
+snippet dom "dominio editable"
+domain=[('$1', '$2', $3)], 
+endsnippet
+
+# Default
+snippet defc "default='_compute_x'"
+default="_compute_$1", 
+endsnippet
+
+snippet deft "default=True"
+default=True, 
+endsnippet
+
+snippet deff "default=False"
+default=False, 
+endsnippet
+
+snippet def0 "default=0"
+default=0, 
+endsnippet
+
+snippet defu "default relativo al usuario"
+default=lambda self: self.env.user$1, 
+endsnippet
+
+# Track visibility
+snippet tva "track_visibility='always'"
+track_visibility='always', 
+endsnippet
+
+snippet tvo "track_visibility='onchange'"
+track_visibility='onchange', 
+endsnippet
+
+# translate 
+snippet tt "translate=True"
+translate=True, 
+endsnippet
+
+snippet tf "translate=False"
+translate=False, 
+endsnippet
+
+# states
+snippet srt "campo de solo lectura en estado x"
+states={'$1': [('readonly', True)]}, 
+endsnippet
+
+snippet sdrf "campo de solo lectura editable en borrador"
+readonly=True, states={'draft': [('readonly', False)]}, 
+endsnippet
+
+# API
+
+# @api.onchange
+snippet aoc "nueva fun decorada con api.onchange" b
+@api.multi
+@api.onchange('$1')
+def _onchange_$1(self):
+    $0
+endsnippet
+
+# @api.depends
+snippet ad "nueva fun decorada con api.depends" b
+@api.multi
+@api.depends('$1')
+def _compute_$1(self):
+    $0
+endsnippet
+
+# IMPORTS
+
+snippet im "import models" b
+from odoo import models
+endsnippet
+
+snippet imf "import models and fields" b
+from odoo import models, fields
+endsnippet
+
+snippet imfa "import models, fields and api" b
+from odoo import models, fields, api
+endsnippet
+
+snippet imfa_ "import models, fields, api and _" b
+from odoo import models, fields, api, _
+endsnippet
+
+snippet iex "import all exceptions" b
+from odoo.exceptions import UserError, RedirectWarning, ValidationError
+endsnippet
+
+snippet iue "import user error" b
+from odoo.exceptions import UserError
+endsnippet
+
+snippet irw "import redirect warning" b
+from odoo.exceptions import RedirectWarning
+endsnippet
+
+snippet ive "import validation error" b
+from odoo.exceptions import ValidationError
+endsnippet
+
+snippet idp "import decimal precision" b
+from odoo.addons import decimal_precision as dp
+endsnippet
+
+snippet ilog "import logging" b
+import logging
+_logger = logging.getLogger(__name__)
+endsnippet
+
+# CÓDIGO
+
+snippet se "modificar una fun con super"
+@api.$1
+def $2(self):
+    res = super($3, self).$2()
+    $0
+    return res
+endsnippet
+
+snippet sr "heredar una fun y retornar super"
+@api.$1
+def $2(self):
+    $0
+    return super($3, self).$2()
+endsnippet
+
+snippet wst "wdb.set_trace"
+import wdb; wdb.set_trace()
+endsnippet
+
+
+
+
+# OPERACIONES SOBRE RECORDSETS
+snippet filter "aplicar filter a un recordset"
+filtered(lamda r: r.$1)
+endsnippet
+
+snippet search "aplicar search a un recordset"
+search([('$1', '$2', '$3')])
+endsnippet
+
+

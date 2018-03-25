@@ -1,0 +1,113 @@
+# VISTAS
+
+snippet tv "vista de lista" b
+<record id="$1_tree_view" model="ir.ui.view">
+    <field name="name">${1/([_])/(?1:.)/g}.tree.view</field>
+    <field name="model">${1/([_])/(?1:.)/g}</field>
+    <field name="arch" type="xml">
+        <tree string="${1/(^.)|([_])/\u$1(?2: )/g}"$2>
+            ${3:f}
+        </tree>
+    </field>
+</record>
+$0
+endsnippet
+
+snippet fv "vista de formulario" b
+<record id="$1_form_view" model="ir.ui.view">
+    <field name="name">${1/([_])/(?1:.)/g}.form.view</field>
+    <field name="model">${1/([_])/(?1:.)/g}</field>
+    <field name="arch" type="xml">
+        <form string="${1/(^.)|([_])/\u$1(?2: )/g}"$2>
+            ${3:s}
+        </form>
+    </field>
+</record>
+$0
+endsnippet
+
+snippet sv "vista de búsqueda" b
+<record id="$1_search_view" model="ir.ui.view">
+    <field name="name">${1/([_])/(?1:.)/g}.search.view</field>
+    <field name="model">${1/([_])/(?1:.)/g}</field>
+    <field name="arch" type="xml">
+        <search string="${1/(^.)|([_])/\u$1(?2: )/g}"$2>
+            ${3:f}
+        </search>
+    </field>
+</record>
+$0
+endsnippet
+
+snippet cv "vista de calendario" b
+<record id="$1_calendar_view" model="ir.ui.view">
+    <field name="name">${1/([_])/(?1:.)/g}.calendar.view</field>
+    <field name="model">${1/([_])/(?1:.)/g}</field>
+    <field name="arch" type="xml">
+        <calendar string="${1/(^.)|([_])/\u$1(?2: )/g}"
+	    date_start="$2" color="$3"$4>
+            ${5:f}
+        </calendar>
+    </field>
+</record>
+$0
+endsnippet
+
+# OBJETOS
+
+snippet h "encabezado" b
+<header$1>
+    ${2:f}
+</header>
+$0
+endsnippet
+
+snippet fo "pié de página" b
+<footer$1>
+    ${2:ob}
+</footer>
+$0
+endsnippet
+
+snippet s "hoja" b
+<sheet$1>
+    ${2:g}
+</sheet>
+$0
+endsnippet
+
+snippet g "grupo" b
+<group name="$1" string="${1/(^.)|([_])/\u$1(?2: )/g}"$2>
+    ${3:f}
+</group>
+$0
+endsnippet
+
+snippet n "libreta" b
+<notebook name="$1"$2>
+    ${3:p}
+</notebook>
+$0
+endsnippet
+
+snippet p "página" b
+<page name="$1" string="${1/(^.)|([_])/\u$1(?2: )/g}"$2>
+    ${3:g}
+</page>
+$0
+endsnippet
+
+snippet f "campo" b
+<field name="$1"$2/>
+$0
+endsnippet
+
+snippet ob "botón de tipo objeto" b
+<button name="button_$1" string="${1/(^.)|([_])/\u$1(?2: )/g}" type="object"$2/>
+$0
+endsnippet
+
+snippet ab "botón de tipo action" b
+<button name="%(action_$1)d" string="${1/(^.)|([_])/\u$1(?2: )/g}" type="action"$2/>
+$0
+endsnippet

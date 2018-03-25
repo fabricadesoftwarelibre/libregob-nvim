@@ -6,22 +6,22 @@ Libregob-nvim es una configuración especial para neovim adaptada a las necesida
 
 # ¿Para qué?.
 
-Permite agilizar el desarrollo al incorporar atajos de escritura, a la vez, también permite que desarrolladores indepententes adopten las guías de desarrollo de manera sencilla, sin siquiera saberlo.
+Permite agilizar el desarrollo al incorporar atajos de escritura y a la vez facilita que desarrolladores indepententes adopten las guías de desarrollo de manera sencilla, sin siquiera saberlo.
 
 # Instalación.
 
-La configuración más sencilla es agregar libregob-nvim como alias en nuestro equipo, en nuestro ejemplo estamos usando la palabra `edit`, pero usted puede reemplazarla por otro sin inconveniente:
+La configuración más sencilla es agregar libregob-nvim como alias en nuestro equipo, en nuestro ejemplo estamos usando la palabra `edit`, pero usted puede reemplazarla por otra sin inconveniente:
 
 ```console
 foo@bar:~$ echo "alias edit='docker run -it --rm -v $(pwd):/src --workdir /src fabricadesoftwarelibre/libregob-nvim:18.1'" >>~/.bash_aliases
 foo@bar:~$ source ~/.bash_aliases
 ```
-Una vez instalado, nos movilizamos al directorio que deseamos editar y ejecutamos `edit`, ingresaremos al directorio y podremos ingresar a editar cualquier archivo.
+Una vez instalado, nos movilizamos al directorio que deseamos editar y ejecutamos `edit`, ingresaremos al directorio y podremos empezar a editar cualquier archivo.
 
-Si quisieramos editar nuestro directorio libregob-addons, lo haríamos de la siguiente manera:
+Si quisieramos editar un archivo en nuestro directorio libregob-addons, lo haríamos de la siguiente manera:
 
 ```console
-foo@bar:~$ ~/Repositorios/fabricadesoftwarelibre/libregob/libregob-addons/
+foo@bar:~$ cd ~/Repositorios/fabricadesoftwarelibre/libregob/libregob-addons/
 foo@bar:~$ edit
 ```
 # Instrucciones de uso.
@@ -115,22 +115,27 @@ En archivos de python:
 |sr|Aplicar super a una función y retornar res.|
 |wst|Agregar punto de depuración en wdb.|
 
-Para utilizar los atajos debemos presionar la tecla de tabulador al finalizar el mismo, por ejemplo, para crear un nuevo modelo deberemos digitar `inmm<TAB>`:
+Para utilizar los atajos debemos presionar la tecla de tabulador al finalizar el mismo, por ejemplo, para crear un nuevo modelo deberemos digitar `inmm<TAB>`.
 
-i -> Entramos a modo de edisión de nvim.
-nmm -> nuestro atajo.
-<TAB> -> Presionamos la tecla tabulador para expandir nuestro atajo.
+|Comando|Explicación|
+|---|---|
+|`i`| Entramos a modo de edisión de nvim.|
+|`nmm`|Nuestro atajo.|
+|`<TAB>`|Presionamos la tecla tabulador para expandir nuestro atajo.|
 
 Al expandirse, nuestro atajo nos ubicará en diferentes posiciones, mismas que nos permitirán agregar las variables de nuestro trabajo actual, para pasar a la siguiente variable debemos presionar `Cntrl+b`.
 
 Los atajos están configurados para utilizar nuestras variables de manera inteligente, por ejemplo, al crear una nueva vista, el atajo nos ubicará en la posición para editar el nombre de la vista, nosotros agregaremos, por ejemplo, account\_invoice, automáticamente el sistema nos agregará form\_view, tree\_view, etc. También utilizará nuestro valor para editar el modelo, reemplazando los \_ (guiones bajos) con . (punto) y agregará el texto a mostrar (string) de la vista capitalizando la primera letra y reemplazando los guiones bajos con espacios.
 
-En el ejemplo anterior, usando el atajo "fw" tendríamos el siguiente resultado:
-Comando completo: ifw<TAB>
-Texto agregado: account\_invoice
-Nombre completo de la vista: account\_invoice\_form\_view
-Nombre del modelo: account.invoice
-String de la vista: Account invoice
+En el ejemplo anterior, usando el atajo "fw" tendríamos el siguiente resultado.
+
+|Explicación|Valor|
+|---|---|
+|Comando completo|`ifw<TAB>`.|
+|Texto agregado|account\_invoice|
+|Nombre completo de la vista|account\_invoice\_form\_view|
+|Nombre del modelo|account.invoice|
+|String de la vista|Account invoice|
 
 La mejor manera de conocer todos los atajos es probándolos.
 

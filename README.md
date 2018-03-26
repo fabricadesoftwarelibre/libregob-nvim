@@ -50,7 +50,7 @@ En archivos de python:
 
 |Atajo|Acción|
 |-----|------|
-|npyf|Agrega el encabezado para un archivo python.|
+|pyfh|Agrega el encabezado para un archivo python.|
 |im|Importar models.|
 |imf|Importar models y fields.|
 |imfa|Importar models, fields y el api.|
@@ -61,9 +61,9 @@ En archivos de python:
 |irw|Importar RedirectWarning.|
 |ilog|Importar logging.|
 |idp|Importar la presición decimal.|
-|nmm|Nuevo modelo.|
+|mm|Nuevo modelo.|
 |imm|Heredar modelo.|
-|ntm|Nuevo wizard.|
+|tm|Nuevo wizard.|
 |itm|Heredar wizard.|
 |fc|Agregar un campo Char.|
 |ft|Agrega un campo Text.|

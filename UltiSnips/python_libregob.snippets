@@ -1,7 +1,7 @@
 
 # NUEVO ARCHIVO.
 
-snippet npyf "nuevo archivo python" b
+snippet pyfh "nuevo archivo python" b
 # -*- coding: utf-8 -*-
 ####################################################
 # Parte del Proyecto LibreGOB: http://libregob.org #
@@ -34,7 +34,7 @@ class $1(models.TrascientModel)
 endsnippet
 
 # New Model
-snippet nmm "nuevo modelo"
+snippet mm "nuevo modelo"
 class $1(models.Model)
     _name = '${1/([a-z]*)([A-Z]+)/(?1:$1.)\L$2\E/g}'
     _description = '${1/(.)([A-Z]+)/(?1:$1)(?1: $2)/g}' 
@@ -43,7 +43,7 @@ class $1(models.Model)
 endsnippet
 
 # New TrascientModel
-snippet nmt "nuevo wizard"
+snippet mt "nuevo wizard"
 class $1(models.TrascientModel)
     _name = '${1/([a-z]*)([A-Z]+)/(?1:$1.)\L$2\E/g}' 
     _description = '${1/(.)([A-Z]+)/(?1:$1)(?1: $2)/g}' 

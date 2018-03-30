@@ -27,7 +27,7 @@ foo@bar:~$ edit
 # Instrucciones de uso.
 
 ## Navegación y visualización.
-[Tagbar](https://github.com/majutsushi/tagbar) se encuentra instalado para una facil navegación, para activarlo, debemos presionar la tecla <F10>. Se desplegará una barra al lado derecho de la pantalla con todas las definiciones de nuestro archivo, con ella podemos nagegar hacia la función que deseemos y presionamos <ENTER>, la barra se cerrará automáticamente y el cursor se posicionará sobre la definición elegida.
+[Tagbar](https://github.com/majutsushi/tagbar) se encuentra instalado para una facil navegación, para activarlo, debemos presionar la tecla `<F10>`. Se desplegará una barra al lado derecho de la pantalla con todas las definiciones de nuestro archivo, con ella podemos nagegar hacia la función que deseemos y presionamos `<ENTER>`, la barra se cerrará automáticamente y el cursor se posicionará sobre la definición elegida.
 
 Para una navegación más eficiente, podemos utilizar las marcas de vim, de la siguiente manera.
 - Para agregar una marca presionamos `mx`, donde x es la letra sobre la cual queremos agregar nuestra marca.
@@ -151,23 +151,23 @@ En archivos de python:
 |wst|Agregar punto de depuración en wdb.|
 |rue|Levanta un error de usuario.|
 
-Para utilizar los atajos debemos presionar la tecla de tabulador al finalizar el mismo, por ejemplo, para crear un nuevo modelo deberemos digitar `inmm<TAB>`.
+Para utilizar los atajos debemos presionar la tecla de tabulador al finalizar el mismo, por ejemplo, para crear un nuevo modelo deberemos digitar `imm<TAB>`.
 
 |Comando|Explicación|
 |---|---|
 |`i`| Entramos a modo de edisión de nvim.|
-|`nmm`|Nuestro atajo.|
+|`mm`|Nuestro atajo.|
 |`<TAB>`|Presionamos la tecla tabulador para expandir nuestro atajo.|
 
-Al expandirse, nuestro atajo nos ubicará en diferentes posiciones, mismas que nos permitirán agregar las variables de nuestro trabajo actual, para pasar a la siguiente variable debemos presionar `Cntrl+b`.
+Al expandirse, nuestro atajo nos ubicará en diferentes posiciones, mismas que nos permitirán agregar las variables de nuestro trabajo actual, para pasar a la siguiente variable debemos presionar `<TAB>`, para retornar a la variable anterior, usamos `Shift+<TAB>`.
 
 Los atajos están configurados para utilizar nuestras variables de manera inteligente, por ejemplo, al crear una nueva vista, el atajo nos ubicará en la posición para editar el nombre de la vista, nosotros agregaremos, por ejemplo, account\_invoice, automáticamente el sistema nos agregará form\_view, tree\_view, etc. También utilizará nuestro valor para editar el modelo, reemplazando los \_ (guiones bajos) con . (punto) y agregará el texto a mostrar (string) de la vista capitalizando la primera letra y reemplazando los guiones bajos con espacios.
 
-En el ejemplo anterior, usando el atajo "fw" tendríamos el siguiente resultado.
+En el ejemplo anterior, para crear una vista de formulario (form view) en archivo .xml podemos usar el atajo `fw`, tendríamos el siguiente resultado:
 
 |Explicación|Valor|
 |---|---|
-|Comando completo|`ifw<TAB>`.|
+|Comando completo|`ifw<TAB>`|
 |Texto agregado|account\_invoice|
 |Nombre completo de la vista|account\_invoice\_form\_view|
 |Nombre del modelo|account.invoice|
@@ -176,7 +176,7 @@ En el ejemplo anterior, usando el atajo "fw" tendríamos el siguiente resultado.
 ## Archivos CSV.
 El manejo de archivos csv es complejo en editores de texto, comunmente recurrimos a herramientas adicionales como LibreOffice o Excel para trabajar con este tipo de arhivo.
 
-Libregob-nvim utiliza el complemento [csv.vim](https://github.com/chrisbra/csv.vim) para facilitar el trabajo con este tipo de archivos. Una de las funciones más importantes es poder mantener el encabezado de nuestro archivo a la vista en todo momento, para ello, podemos presionar la techa <F9> para mostrar y ocultar el encabezado de nuestro archivo. Debido a que normalmente vamos a editar archivos con información de objetos, por defecto se ha configurado que la primera línea sea considerada como el encabezado, no como una línea normal.
+Libregob-nvim utiliza el complemento [csv.vim](https://github.com/chrisbra/csv.vim) para facilitar el trabajo con este tipo de archivos. Una de las funciones más importantes es poder mantener el encabezado de nuestro archivo a la vista en todo momento, para ello, podemos presionar la techa `<F9>` para mostrar y ocultar el encabezado de nuestro archivo. Debido a que normalmente vamos a editar archivos con información de objetos, por defecto se ha configurado que la primera línea sea considerada como el encabezado, no como una línea normal.
 
 La mejor manera de conocer todos los atajos es probándolos.
 

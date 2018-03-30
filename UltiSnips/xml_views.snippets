@@ -20,7 +20,7 @@ snippet fv "vista de formulario" b
     <field name="arch" type="xml">
         <form string="${1/(^.)|([_])/\u$1(?2: )/g}"$2>
             ${3:s}
-        </form>
+		</form>
     </field>
 </record>
 $0
@@ -111,3 +111,69 @@ snippet ab "botón de tipo action" b
 <button name="%(action_$1)d" string="${1/(^.)|([_])/\u$1(?2: )/g}" type="action"$2/>
 $0
 endsnippet
+
+# MODIFICADORES 
+
+snippet it "invisible"
+invisible="1"
+endsnippet
+
+snippet rot "solo lectura"
+readonly="1"
+endsnippet
+
+snippet nlt "sin etiqueta"
+nolabel="1"
+endsnippet
+
+# Opciones
+snippet op "opciones"
+options='{$1}$0'
+endsnippet
+
+snippet nc "no_create"
+"no_create": True$0
+endsnippet
+
+snippet nce "no_create_edit"
+"no_create_edit": True$0
+endsnippet
+
+snippet no "no_open"
+"no_open": True$0
+endsnippet
+
+snippet nqc "no_quick_create"
+"no_quick_create": True$0
+endsnippet
+
+# WIDGETS
+snippet ws "widget selection"
+widget="selection"$0
+endsnippet
+
+snippet wm2m "widget many2many"
+widget="many2many"$0
+endsnippet
+
+snippet wm2mt "widget many2many_tags"
+widget="many2many_tags"$0
+endsnippet
+
+snippet wm2mc "widget many2many_checkboxes"
+widget="many2many_checkboxes"$0
+endsnippet
+
+snippet wm2mk "widget many2many_kanban"
+widget="many2many_kanban"$0
+endsnippet
+
+snippet wm2mb "widget many2many_binary"
+widget="many2many_binary"$0
+endsnippet
+
+snippet wx2mc "widget x2many_counter"
+widget="x2many_counter"$0
+endsnippet
+
+

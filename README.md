@@ -26,7 +26,28 @@ foo@bar:~$ edit
 ```
 # Instrucciones de uso.
 
-Una vez que hemos ingresado a libregob-nvim podemos editar nuestros archivos de python y xml, mismos que tendrán los siguientes atajos:
+## Navegación y visualización.
+[Tagbar](https://github.com/majutsushi/tagbar) se encuentra instalado para una facil navegación, para activarlo, debemos presionar la tecla <F10>. Se desplegará una barra al lado derecho de la pantalla con todas las definiciones de nuestro archivo, con ella podemos nagegar hacia la función que deseemos y presionamos <ENTER>, la barra se cerrará automáticamente y el cursor se posicionará sobre la definición elegida.
+
+Para una navegación más eficiente, podemos utilizar las marcas de vim, de la siguiente manera.
+- Para agregar una marca presionamos `mx`, donde x es la letra sobre la cual queremos agregar nuestra marca.
+- Para movernos hacia la marca creada usamos `'x`.
+
+Las marcas en mayúsculas están disponibles desde todos los buffer abiertos, las marcas en minúscula, son locales a cada buffer.
+
+Gracias a [vim-markology](https://github.com/jeetsukumaran/vim-markology) disponemos de interesantes opciones adicionales, como:
+- `m+` agrega una marca con la siguiente letra disponible.
+- `m-` borramos la marca de la línea seleccionada.
+- `m]` navegamos a la siguiente marca local.
+- `m[` navegamos a la marca local anterior.
+- `m?` listamos las marcas locales.
+- `m^` listamos las marcas en la lista QuickFix.
+
+Adicionalmente, con la ayuda de [vim-gitgutter](https://github.com/airblade/vim-gitgutter) podemos observar, al lado izquierdo de nuestra pantalla, las línas que han sido modificadas, añadidas o eliminadas de nuestro repositorio con los signos ~, + y - respectivamente.
+
+
+## Autocompletado.
+[Ultisnips](https://github.com/SirVer/ultisnips) es nuestro principal aliado, con este complemento podemos utilizar atajos (snippets) para agilizar nuestra escritura, a continuación tenemos una lista de los atajos actualmente implementados:
 
 En archivos xml:
 
@@ -45,6 +66,18 @@ En archivos xml:
 |f|agrega un campo (field).|
 |ob|agrega un botón de tipo objeto (object button).|
 |ab|agrega un botón de tipo acción (action button).|
+|op|opciones|
+|nc|no create|
+|nce|no create edit|
+|nqc|no quick create|
+|no|no  open|
+|ws|widget selection|
+|wm2m|widget many2many|
+|wm2mt|widget many2many tags|
+|wm2mc|widget many2many checkboxes|
+|wm2mk|widget many2many kanban|
+|wm2mb|widget many2many binary|
+|wx2mc|widget x2many counter|
 
 En archivos de python:
 
@@ -96,7 +129,8 @@ En archivos de python:
 |domf|dominio falso|
 |domt|dominio verdadero|
 |dom|dominio editable|
-|defc|default a fórmula \_compute\_$1"
+|comp|compute a fórmula '\_compute\_$1"|
+|defc|default a fórmula \_compute\_$1"|
 |deft|default=True|
 |deff|default=False|
 |def0|default=0|
@@ -108,12 +142,14 @@ En archivos de python:
 |srt|campo de solo lectura en estado $1|
 |sdrf|campo de solo lectura editable en borrador|
 |aoc|nueva fun decorada con api.onchange|
+|aocrdom|retornar un dominio a través de un onchange|
 |ad|nueva fun decorada con api.depends|
 |filter|aplicar filter a un recordset|
 |search|aplicar search a un recordset|
-|se|Aplicar super a una función y trabajar sobre res.|
-|sr|Aplicar super a una función y retornar res.|
+|sup|Aplicar super a una función y trabajar sobre res.|
+|supr|Aplicar super a una función y retornar res.|
 |wst|Agregar punto de depuración en wdb.|
+|rue|Levanta un error de usuario.|
 
 Para utilizar los atajos debemos presionar la tecla de tabulador al finalizar el mismo, por ejemplo, para crear un nuevo modelo deberemos digitar `inmm<TAB>`.
 
@@ -137,11 +173,12 @@ En el ejemplo anterior, usando el atajo "fw" tendríamos el siguiente resultado.
 |Nombre del modelo|account.invoice|
 |String de la vista|Account invoice|
 
+## Archivos CSV.
+El manejo de archivos csv es complejo en editores de texto, comunmente recurrimos a herramientas adicionales como LibreOffice o Excel para trabajar con este tipo de arhivo.
+
+Libregob-nvim utiliza el complemento [csv.vim](https://github.com/chrisbra/csv.vim) para facilitar el trabajo con este tipo de archivos. Una de las funciones más importantes es poder mantener el encabezado de nuestro archivo a la vista en todo momento, para ello, podemos presionar la techa <F9> para mostrar y ocultar el encabezado de nuestro archivo. Debido a que normalmente vamos a editar archivos con información de objetos, por defecto se ha configurado que la primera línea sea considerada como el encabezado, no como una línea normal.
+
 La mejor manera de conocer todos los atajos es probándolos.
 
 ¡suerte!  
-
-
-
-
 

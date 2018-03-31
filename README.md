@@ -10,10 +10,12 @@ Permite agilizar el desarrollo al incorporar atajos de escritura y a la vez faci
 
 # Instalación.
 
-La configuración más sencilla es agregar libregob-nvim como alias en nuestro equipo, en nuestro ejemplo estamos usando la palabra `edit`, pero usted puede reemplazarla por otra sin inconveniente:
+La configuración más sencilla es agregar libregob-nvim como alias en nuestro equipo, en nuestro ejemplo estamos usando la palabra `edit`, pero usted puede reemplazarla por otra sin inconveniente.
+
+Existen dos variables que podemos agregar en nuestro comando RUN: `GIT_MAIL` para agregar nuestro correo de git al contenedor y `GIT_NAME` para agregar nuestro nombre de usuario.
 
 ```console
-foo@bar:~$ echo "alias edit='docker run -it --rm -v $(pwd):/src --workdir /src fabricadesoftwarelibre/libregob-nvim:18.1'" >>~/.bash_aliases
+foo@bar:~$ echo "alias edit='docker run -it --rm -v $(pwd):/src -e GIT_NAME="Usuario de Minka" -e GIT_MAIL="correo@deminka.com" --workdir /src fabricadesoftwarelibre/libregob-nvim:18.1'" >>~/.bash_aliases
 foo@bar:~$ source ~/.bash_aliases
 ```
 Una vez instalado, nos movilizamos al directorio que deseamos editar y ejecutamos `edit`, ingresaremos al directorio y podremos empezar a editar cualquier archivo.

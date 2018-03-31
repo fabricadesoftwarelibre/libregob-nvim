@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
     && apt-get --force-yes install -y neovim vim \
-       python3 python2.7 \
+       git python3 python2.7 \
        python-dev python3-dev \
        python-pip python3-pip \
        curl exuberant-ctags git ack-grep \
@@ -22,5 +22,7 @@ ADD ./UltiSnips/ /root/.config/nvim/UltiSnips/
 ADD ./config/init.vim /root/.config/nvim/
 RUN timeout 5m nvim || true
 
+ENV GIT_NAME="User Name"
+ENV GIT_MAIL="user@mail.com"
 
-CMD ["nvim", "/src"] 
+ENTRYPOINT git config --global user.name ${GIT_NAME} && git config --global user.mail ${GIT_MAIL} && nvim /src 

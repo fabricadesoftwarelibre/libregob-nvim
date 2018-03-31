@@ -124,6 +124,13 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(pyc|pyo|swo|swp)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
+let g:ctrlp_open_new_file = 'v'
+let g:ctrlp_open_multiple_files = '4ijr'
+nnoremap <silent> <c-b> :CtrlPBuffer <CR>
+nnoremap <silent> <c-m> :CtrlPMRU <CR>
+nnoremap <silent> <c-t> :CtrlPBufTag <CR>
+nnoremap <silent> <c-l> :CtrlPLine <CR>
+nnoremap <silent> <c-c> :CtrlPChangeAll <CR>
 
 " --- gitGutter ---
 "  Actualización más rápida de cambios.
@@ -139,7 +146,9 @@ endif
 let g:airline#extensions#tabline#enabled = 1
 
 " --- Tagbar ---
-nnoremap <silent> <f10> :TagbarOpenAutoClose <CR>
+"nnoremap <silent> <f10> :TagbarOpenAutoClose <CR>
+let g:tagbar_autoclose = 1
+nnoremap <silent> <f10> :TagbarToggle <CR>
 
 " --- csv.vim ---
 let g:csv_highlight_column = 'y'

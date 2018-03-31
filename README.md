@@ -45,6 +45,16 @@ Gracias a [vim-markology](https://github.com/jeetsukumaran/vim-markology) dispon
 
 Adicionalmente, con la ayuda de [vim-gitgutter](https://github.com/airblade/vim-gitgutter) podemos observar, al lado izquierdo de nuestra pantalla, las línas que han sido modificadas, añadidas o eliminadas de nuestro repositorio con los signos ~, + y - respectivamente.
 
+Para la navegación entre archivos, buffers, tags, rmu (most-recently used files), entre otros, usamos el complemento [CntrlP](https://github.com/ctrlpvim/ctrlp.vim), a través del cual podemos usar los siguientes atajos de búsqueda:
+- `Cntrl+p` para buscar archivos en el directorio actual (utiliza búsqueda 'fuzzy').
+- `Cntrl+b` para buscar en los nombres de los buffer abiertos.
+- `Cntrl+m` para buscar los archivos recientemente abiertos. 
+- `Cntrl+t` para buscar en los tags de los buffer actuales.
+- `Cntrl+l` para buscar texto en las líneas de los buffer actuales.
+- `Cntrl+c` para buscar texto en las líneas modificadas recientemente.
+
+Una de las acciones más comunes es analizar el contenido de los archivos base de LibreGOB de módulos que nos son desconocidos, en ese caso, podemos navegar por una lista comprensiva de tags presionando la tecla `<F10>`, se desplegará a nuestra mano derecha una lista de todos los tags en el archivo actual. Navegamos por ellos con las flechas del teclado y al presionar `<ENTER>` se cerrará la ventana de tags y nos llevará a la ubicación seleccionada. Si deseamos cerrar la ventana sin elegir una nueva ubicación, deberemos presional la tecla `<F10>` nuevamente.
+
 
 ## Autocompletado.
 [Ultisnips](https://github.com/SirVer/ultisnips) es nuestro principal aliado, con este complemento podemos utilizar atajos (snippets) para agilizar nuestra escritura, a continuación tenemos una lista de los atajos actualmente implementados:

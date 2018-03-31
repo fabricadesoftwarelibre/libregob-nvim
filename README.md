@@ -28,7 +28,7 @@ foo@bar:~$ mkdir -p ~/Docker/neovim/etc
 foo@bar:~$ mkdir -p ~/Docker/neovim/config
 ```
 
-Ahora vamos a crear el archivo para la configuración de git, vamos a user vim en el ejemplo, pero pueden cambiar el editor de texto si aún no lo tienen disponible en sus equipos.
+Ahora vamos a crear el archivo para la configuración de git, vamos a usar vim en el ejemplo, pero pueden cambiar el editor de texto si aún no lo tienen disponible en sus equipos.
 
 ```console
 foo@bar:~$ vim ~/Docker/neovim/etc/gitconfig
@@ -51,7 +51,7 @@ foo@bar:~$ source ~/.bash_aliases
 
 Una vez instalado, nos movilizamos al directorio que deseamos editar y ejecutamos `edit`, ingresaremos al directorio y podremos empezar a editar cualquier archivo.
 
-Si quisieramos editar un archivo en nuestro directorio libregob-addons, lo haríamos de la siguiente manera:
+Por ejemplo, quisieramos editar un archivo en nuestro directorio libregob-addons, lo haríamos de la siguiente manera:
 
 ```console
 foo@bar:~$ cd ~/Repositorios/fabricadesoftwarelibre/libregob/libregob-addons/

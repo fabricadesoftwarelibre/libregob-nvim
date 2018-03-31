@@ -53,7 +53,7 @@ Para la navegación entre archivos, buffers, tags, rmu (most-recently used files
 - `Cntrl+l` para buscar texto en las líneas de los buffer actuales.
 - `Cntrl+c` para buscar texto en las líneas modificadas recientemente.
 
-Una de las acciones más comunes es analizar el contenido de los archivos base de LibreGOB de módulos que nos son desconocidos, en ese caso, podemos navegar por una lista comprensiva de tags presionando la tecla `<F10>`, se desplegará a nuestra mano derecha una lista de todos los tags en el archivo actual. Navegamos por ellos con las flechas del teclado y al presionar `<ENTER>` se cerrará la ventana de tags y nos llevará a la ubicación seleccionada. Si deseamos cerrar la ventana sin elegir una nueva ubicación, deberemos presional la tecla `<F10>` nuevamente.
+Una de las acciones más comunes es analizar el contenido de módulos que nos son desconocidos, en ese caso, podemos navegar por una lista comprensiva de tags presionando la tecla `<F10>`. Se desplegará a nuestra mano derecha una barra con los tags del archivo actual, navegamos por ellos con las flechas del teclado y al presionar `<ENTER>` se cerrará la ventana de tags y nos llevará a la ubicación seleccionada. Si deseamos cerrar la ventana sin elegir una nueva ubicación, deberemos presional la tecla `<F10>` nuevamente.
 
 
 ## Autocompletado.

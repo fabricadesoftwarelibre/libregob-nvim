@@ -12,15 +12,46 @@ Permite agilizar el desarrollo al incorporar atajos de escritura y a la vez faci
 
 La configuración más sencilla es agregar libregob-nvim como alias en nuestro equipo, en nuestro ejemplo estamos usando la palabra `edit`, pero usted puede reemplazarla por otra sin inconveniente.
 
-Existen dos variables que podemos agregar en nuestro comando RUN: `GIT_MAIL` para agregar nuestro correo de git al contenedor y `GIT_NAME` para agregar nuestro nombre de usuario.
-
 ```console
-foo@bar:~$ echo "alias edit='docker run -it --rm -v $(pwd):/src -e GIT_NAME="Usuario de Minka" -e GIT_MAIL="correo@deminka.com" --workdir /src fabricadesoftwarelibre/libregob-nvim:18.1'" >>~/.bash_aliases
+foo@bar:~$ echo "alias edit='docker run -it --rm -v $(pwd):/src -e --workdir /src fabricadesoftwarelibre/libregob-nvim:18.1'" >>~/.bash_aliases
 foo@bar:~$ source ~/.bash_aliases
 ```
+
+Si deseamos tener persistencia de datos o si queremos agregar nuestra configuración de Git, podemos utilizar volúmenes, requerimos principalmente dos:
+- `/root/.config/nvim` para almacenar nuestra configuración general de nvim.
+- `/etc/gitconfig` para nuestra configuración de git.
+
+Vamos a hacer un ejercicio creándolo en nuestro directorio `/home`, usando los subdirecotios en `Docker/neovim`.
+
+```console
+foo@bar:~$ mkdir -p ~/Docker/neovim/etc
+foo@bar:~$ mkdir -p ~/Docker/neovim/config
+```
+
+Ahora vamos a crear el archivo para la configuración de git, vamos a usar vim en el ejemplo, pero pueden cambiar el editor de texto si aún no lo tienen disponible en sus equipos.
+
+```console
+foo@bar:~$ vim ~/Docker/neovim/etc/gitconfig
+```
+
+Y agregamos el siguiente contenido al documento:
+
+```console
+[user]
+    name = Su nombre de usuario de Minka
+    mail = sucorreo@deusuariodeminka
+```
+
+Una vez que hemos creado las carpetas y el archivo requerido para la persistencia, agregaremos el siguiente alias:
+
+```console
+foo@bar:~$ echo "alias edit='docker run -it --rm -v $(pwd):/src -v ~/Docker/neovim/etc/gitconfig:/etc/gitconfig -v ~/Docker/neovim/config:/root/.config/nvim --workdir /src -t fabricadesoftwarelibre/libregob-nvim:18.1" >>~/.bash_aliases
+foo@bar:~$ source ~/.bash_aliases
+```
+
 Una vez instalado, nos movilizamos al directorio que deseamos editar y ejecutamos `edit`, ingresaremos al directorio y podremos empezar a editar cualquier archivo.
 
-Si quisieramos editar un archivo en nuestro directorio libregob-addons, lo haríamos de la siguiente manera:
+Por ejemplo, quisieramos editar un archivo en nuestro directorio libregob-addons, lo haríamos de la siguiente manera:
 
 ```console
 foo@bar:~$ cd ~/Repositorios/fabricadesoftwarelibre/libregob/libregob-addons/

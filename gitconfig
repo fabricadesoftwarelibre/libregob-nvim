@@ -1,0 +1,12 @@
+[user]
+    name = Daniel Mendieta 
+    email = damendieta@fslibre.com
+[color]
+    ui = true
+[core]
+    editor = vim
+    pager = less
+[rebase]
+    autostash = true
+[pull]
+    rebase = true

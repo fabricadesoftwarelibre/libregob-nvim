@@ -82,7 +82,7 @@ En archivos xml:
 |nc|no create|
 |nce|no create edit|
 |nqc|no quick create|
-|no|no  open|
+|no|no open|
 |ws|widget selection|
 |wm2m|widget many2many|
 |wm2mt|widget many2many tags|

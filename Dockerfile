@@ -20,9 +20,7 @@ RUN pip3 install pep8 flake8 pyflakes pylint isort
 RUN mkdir -p ~/.config/nvim/UltiSnips/
 ADD ./UltiSnips/ /root/.config/nvim/UltiSnips/
 ADD ./config/init.vim /root/.config/nvim/
+ADD gitconfig /etc/gitconfig
 RUN timeout 5m nvim || true
 
-ENV GIT_NAME="User Name"
-ENV GIT_MAIL="user@mail.com"
-
-ENTRYPOINT git config --global user.name ${GIT_NAME} && git config --global user.mail ${GIT_MAIL} && nvim /src 
+ENTRYPOINT ["nvim", "/src"]

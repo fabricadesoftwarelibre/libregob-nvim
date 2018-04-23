@@ -25,9 +25,9 @@ class $1(models.Model):
     $0
 endsnippet
 
-# Inherit TrascientModel
+# Inherit TransientModel
 snippet imt "heredar un wizard"
-class $1(models.TrascientModel):
+class $1(models.TransientModel):
     _inherit = '${1/([a-z]*)([A-Z]+)/(?1:$1.)\L$2\E/g}'
 
     $0
@@ -36,19 +36,19 @@ endsnippet
 # New Model
 snippet mm "nuevo modelo"
 class $1(models.Model):
-    _name = '${1/([a-z]*)([A-Z]+)/(?1:$1.)\L$2\E/g}'
-    _description = '${1/(.)([A-Z]+)/(?1:$1)(?1: $2)/g}' 
+	_name = '${1/([a-z]*)([A-Z]+)/(?1:$1.)\L$2\E/g}'
+	_description = '${1/(.)([A-Z]+)/(?1:$1)(?1: $2)/g}' 
 
-    $0
+	$0
 endsnippet
 
-# New TrascientModel
+# New TransientModel
 snippet mt "nuevo wizard"
-class $1(models.TrascientModel):
-    _name = '${1/([a-z]*)([A-Z]+)/(?1:$1.)\L$2\E/g}' 
-    _description = '${1/(.)([A-Z]+)/(?1:$1)(?1: $2)/g}' 
+class $1(models.TransientModel):
+	_name = '${1/([a-z]*)([A-Z]+)/(?1:$1.)\L$2\E/g}' 
+	_description = '${1/(.)([A-Z]+)/(?1:$1)(?1: $2)/g}' 
 
-    $0
+	$0
 endsnippet
 
 # FIELDS
@@ -85,7 +85,7 @@ endsnippet
 
 # Binary
 snippet fbi "fields.Binary" b
-$1 = fields.Binary(string='${1/(^.)|([_])/\u$1(?2: )/g}', $2)
+$1 = fields.Binary(string='${1/(^.)|([_])/\u$1(?2: )/g}', attachment=True, $2)
 $0
 endsnippet
 
@@ -138,11 +138,11 @@ endsnippet
 # Selection
 snippet fs "fields.selection" b
 $1 = fields.Selection([
-        ('$2','${2/(^.)|([_])/\u$1(?2: )/g}'),
-        ('$3','${3/(^.)|([_])/\u$1(?2: )/g}'),
-    ], default="$2",
-    string='${1/(^.)|([_])/\u$1(?2: )/g}',
-    $4)
+		('$2','${2/(^.)|([_])/\u$1(?2: )/g}'),
+		('$3','${3/(^.)|([_])/\u$1(?2: )/g}'),
+	], default="$2",
+	string='${1/(^.)|([_])/\u$1(?2: )/g}',
+	$4)
 $0
 endsnippet
 
@@ -306,7 +306,16 @@ snippet aoc "nueva fun decorada con api.onchange" b
 @api.multi
 @api.onchange('$1')
 def _onchange_$1(self):
-    $0
+	for r in self:
+		$0
+endsnippet
+
+# @api.multi
+snippet am "nueva fun decorada con api.multi" b
+@api.multi
+def $1(self):
+	for r in self:
+		$0
 endsnippet
 
 # @api.depends
@@ -314,7 +323,8 @@ snippet ad "nueva fun decorada con api.depends" b
 @api.multi
 @api.depends('$1')
 def _compute_$1(self):
-    $0
+	for r in self:
+		$0
 endsnippet
 
 snippet sup "modificar una fun con super"
@@ -385,9 +395,19 @@ _logger = logging.getLogger(__name__)
 $0
 endsnippet
 
+# ENV
+
+snippet se "self.env['']"
+self.env['$1']
+endsnippet
+
+snippet =se "self.env['']"
+$1_obj = self.env['$2']
+endsnippet
+
 # CÓDIGO
 
-snippet wst "wdb.set_trace"
+snippet w "wdb.set_trace"
 import wdb; wdb.set_trace()
 endsnippet
 

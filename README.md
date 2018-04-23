@@ -97,6 +97,7 @@ En archivos xml:
 |Atajo|Acción|
 |-----|------|
 |tv|agrega una vista de lista (tree view).|
+|itv|hereda una vista de lista (tree view).|
 |fv|agrega una vista de formulario (form view).|
 |sv|agrega una vista de búsqueda o filtro (search view).|
 |cv|agrega una vista de calendario (calendar view).|
@@ -109,6 +110,19 @@ En archivos xml:
 |f|agrega un campo (field).|
 |ob|agrega un botón de tipo objeto (object button).|
 |ab|agrega un botón de tipo acción (action button).|
+|it|invisible|
+|rot|readonly|
+|nlt|nolabel|
+|xp|xpath|
+|xpf|xpath field|
+|xpb|xpath button|
+|xpd|xpath div|
+|xpn|xpath notebook position inside|
+|xpp|xpath page|
+|pi|position inside|
+|pa|position after|
+|pb|position before|
+|pr|position replace|
 |op|opciones|
 |nc|no create|
 |nce|no create edit|
@@ -191,7 +205,9 @@ En archivos de python:
 |search|aplicar search a un recordset|
 |sup|Aplicar super a una función y trabajar sobre res.|
 |supr|Aplicar super a una función y retornar res.|
-|wst|Agregar punto de depuración en wdb.|
+|=se| var\_obj = self.env['var']|
+|se| self.env['var']|
+|w|Agregar punto de depuración en wdb.|
 |rue|Levanta un error de usuario.|
 
 Para utilizar los atajos debemos presionar la tecla de tabulador al finalizar el mismo, por ejemplo, para crear un nuevo modelo deberemos digitar `imm<TAB>`.

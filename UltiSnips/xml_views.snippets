@@ -13,6 +13,23 @@ snippet tv "vista de lista" b
 $0
 endsnippet
 
+snippet itv "heredar vista de lista" b
+<record id="${1/^[^.]*./(?1: )/g}" model="ir.ui.view">
+	<field name="name">${1/([_])/(?1: )/g} $2 inherit</field>
+	<field name="model">$3</field>
+	<field name="inherit_id" ref="$1"/>
+	<field name="arch" type="xml">
+		<data>
+			<field name="$4"$5>
+				<field name="$6"$7/>
+				${8:}
+			</field>
+		</data>
+	</field>
+</record>
+$0
+endsnippet
+
 snippet fv "vista de formulario" b
 <record id="$1_form_view" model="ir.ui.view">
     <field name="name">${1/([_])/(?1:.)/g}.form.view</field>
@@ -127,8 +144,61 @@ nolabel="1"
 endsnippet
 
 # HERENCIAS.
-snippet
+snippet xp "xpath"
+<xpath expr="//$1[@$2='$3']" $4>
+	$0
+</xpath>
+endsnippet
 
+snippet xpf "xpath"
+<xpath expr="//field[@name='$1']" $2>
+	$0
+</xpath>
+endsnippet
+
+snippet xpg "xpath"
+<xpath expr="//group[@name='$1']" $2>
+	$0
+</xpath>
+endsnippet
+
+snippet xpd "xpath"
+<xpath expr="//div[@class='$1']" $2>
+	$0
+</xpath>
+endsnippet
+
+snippet xpn "xpath"
+<xpath expr="//notebook[@name='$1']" position="inside">
+	<page string="$1" name="${1/(^.)|([_])/\u$1(?2: )/g}"/>
+		$0
+	</page>
+</xpath>
+endsnippet
+
+snippet xpp "xpath"
+<xpath expr="//page[@name='$1']" $2>
+	<page string="$1" name="${1/(^.)|([_])/\u$1(?2: )/g}"/>
+		$0
+	</page>
+</xpath>
+endsnippet
+
+snippet pi "position inside"
+position="inside"
+endsnippet
+
+snippet pa "position after"
+position="after"
+endsnippet
+
+snippet pb "position before"
+position="before"
+endsnippet
+
+snippet pr "position replace"
+position="replace"
+endsnippet
 
 # OPCIONES
 snippet op "opciones"

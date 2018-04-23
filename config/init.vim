@@ -27,6 +27,27 @@ endif
 " Indica que empezamos a declarar nuestros plug-ins.
 call plug#begin('~/.config/nvim/plugged')
 
+" Autocompletado
+Plug 'roxma/nvim-completion-manager'
+set shortmess+=c    
+imap <c-g> <Plug>(cm_force_refresh)
+
+" Errores
+"Plug 'https://github.com/w0rp/ale.git' " Neomake and Syntastic replacement
+"let g:ale_lint_on_text_changed = 'never'
+"let g:ale_lint_on_enter = 0
+"let g:ale_open_list = 1
+"let g:ale_completion_enabled = 0
+"let g:ale_sign_column_always = 1
+"let g:ale_linters = {'xml': ['xmllint']}
+"let g:ale_fixers = {'xml' : [ 'xmllint' ]}
+"let g:ale_linters = {'python': ['yapf']}
+"let g:ale_fixers = {'python' : [ 'yapf' ]}
+"let g:ale_fix_on_save = 0
+"let g:ale_sign_error = '>>'
+"let g:ale_sign_warning = '!!'
+
+
 " CSV
 Plug 'chrisbra/csv.vim'
 
@@ -52,6 +73,16 @@ Plug 'chrisbra/vim-diff-enhanced'
 " NAVEGACIÓN Y BÚSQUEDA DE ARCHIVOS
 " Búsqueda de archivos 
 Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+
+" Facitita la navegación horizontal.
+Plug 'unblevable/quick-scope'
+
+" Facil navegación
+Plug 'justinmk/vim-sneak'
+" https://github.com/haya14busa/incsearch.vim
+" https://github.com/easymotion/vim-easymotion
 
 " STATUS BAR
 " Agrega una barra de estado mejorada. 
@@ -63,6 +94,12 @@ Plug 'jeetsukumaran/vim-markology'
 
 " Barra lateral con ayudas de navegación.
 Plug 'majutsushi/tagbar'
+
+" Muestra marcas de identación.
+Plug 'Yggdroot/indentLine'
+
+" --- ACK ---
+Plug 'mileszs/ack.vim'
 
 " Indica que terminamos de instalar los plugins.
 call plug#end()
@@ -92,6 +129,34 @@ set scrolloff=3
 set rnu 
 set nu
 
+" 0 nos lleva al primer caracter de la línea
+noremap 0 ^
+
+" Moverse por líneas de la pantalla.
+nnoremap j gj
+nnoremap k gk
+
+"Evitar la creación de swp y swo
+set nobackup
+set noswapfile
+
+" Cambiar de buffer sin guardar los cambios.
+set hidden
+
+" Confirma si se quiere cerrar la ventana sin guardar.
+set confirm
+
+" Select another file from the directory of the current one
+nnoremap <leader>F :execute 'edit' expand("%:p:h")<cr>
+
+" Cambiar el tamaño de la ventana con Ctrl+hjkl
+nnoremap <C-j> <C-w>+
+nnoremap <C-k> <C-w>-
+nnoremap <C-h> <C-w><
+nnoremap <C-l> <C-w>>
+
+
+
 " Guardar como superusuario en el contenedor.
 " Mapea al usuario que levanto el servicio.
 ca w!! w !sudo tee "%"
@@ -101,6 +166,19 @@ autocmd BufWritePre *.py :%s/\s\+$//e
 
 " Forzar el uso de bash como consola.
 set shell=/bin/bash 
+
+" No comparar espacios en blanco.
+:set diffopt+=iwhite
+
+" Colores por defecto de differencias.
+if &diff
+    set cursorline
+    map ] ]c
+    map [ [c
+    hi DiffAdd    ctermfg=233 ctermbg=LightGreen guifg=#003300 guibg=#DDFFDD gui=none cterm=none
+    hi DiffChange ctermbg=white  guibg=#ececec gui=none   cterm=none
+    hi DiffText   ctermfg=233  ctermbg=yellow  guifg=#000033 guibg=#DDDDFF gui=none cterm=none
+endif
 
 " --- NERDtree ---
 autocmd StdinReadPre * let s:std_in=1
@@ -132,6 +210,7 @@ nnoremap <silent> <c-t> :CtrlPBufTag <CR>
 nnoremap <silent> <c-l> :CtrlPLine <CR>
 nnoremap <silent> <c-c> :CtrlPChangeAll <CR>
 
+
 " --- gitGutter ---
 "  Actualización más rápida de cambios.
 :set updatetime=200
@@ -141,6 +220,34 @@ nnoremap <silent> <c-c> :CtrlPChangeAll <CR>
 if &diff
     let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
 endif
+
+" --- quick-scope ---
+" Activar solo al iniciar navegación.
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+augroup qs_colors
+  autocmd!
+  autocmd ColorScheme * highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+  autocmd ColorScheme * highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+augroup END
+
+" --- ACK ---
+" Usar ag en lugar de ACK
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
+
+" evitar conflictos con NERDTree
+let g:ack_mappings = {
+    \  'v':  '<C-W><CR><C-W>L<C-W>p<C-W>J<C-W>p',
+    \ 'gv': '<C-W><CR><C-W>L<C-W>p<C-W>J' }
+
+" --- vim-sneak ---
+" Movimientos rápidos hacia adelante con s y atraz con S
+let g:sneak#label = 1
 
 " --- Airline ---
 let g:airline#extensions#tabline#enabled = 1
@@ -158,6 +265,5 @@ nnoremap <silent> <F9> :HeaderToggle <CR>
 
 " terryma/vim-multiple-cursors
 " neomake/neomake
-" mileszs/ack.vim
 " brooth/far.vim
 

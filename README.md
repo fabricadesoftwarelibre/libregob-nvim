@@ -77,10 +77,11 @@ foo@bar:~$ edit
 ## Navegación y visualización.
 
 La navegación básica de vim:
-`i` = editar.
-`ESC` = dejar el modo edición.
-`:x` = guardar y cerrar.
-`:w` = guardar.
+- `i` = editar.
+- `ESC` = dejar el modo edición.
+- `:x` = guardar y cerrar.
+- `:w` = guardar.
+- `:q` = salir.
 
 El navegar entre archivos, buscar líneas de código, abrir nuevos módulos, comparar información, movernos entre archivos abiertos y otras actividades similares consumen una importante parte de nuestro tiempo de desarrollo, por ello, es necesario utilizar atajos y opciones que nos permitan optimizar estas tareas.
 
@@ -235,7 +236,7 @@ Para utilizar los atajos debemos presionar la tecla de tabulador al finalizar el
 
 |Comando|Explicación|
 |---|---|
-|`i`| Entramos a modo de edisión de nvim.|
+|`i`| Entramos a modo de edición de nvim.|
 |`mm`|Nuestro atajo.|
 |`<TAB>`|Presionamos la tecla tabulador para expandir nuestro atajo.|
 

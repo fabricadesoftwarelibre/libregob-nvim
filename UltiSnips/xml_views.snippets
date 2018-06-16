@@ -131,6 +131,10 @@ endsnippet
 
 # MODIFICADORES 
 
+snippet pt "password"
+password="1"
+endsnippet
+
 snippet it "invisible"
 invisible="1"
 endsnippet
@@ -200,6 +204,20 @@ snippet pr "position replace"
 position="replace"
 endsnippet
 
+# ATRIBUTOS
+
+snippet at "atributos"
+attrs="{$1}"
+endsnippet
+
+snippet aro "atributo read only"
+'readonly':[('$2','$2',$3)]
+endsnippet
+
+snippet ain "atributo read only"
+'invisible':[('$2','$2',$3)]
+endsnippet
+
 # OPCIONES
 snippet op "opciones"
 options='{$1}$0'
@@ -250,4 +268,51 @@ snippet wx2mc "widget x2many_counter"
 widget="x2many_counter"$0
 endsnippet
 
+# MENU ITEMS
 
+snippet rmi "root menu item"
+<menuitem
+	id="menu_$1"
+	name="${1/(^.)|([_])/\u$1(?2: )/g}"
+	groups="$2"
+	icon="$3"
+	web_icon="$4"
+	sequence="$5"
+	/>
+$0
+endsnippet
+
+snippet rmi "submenu item"
+<menuitem
+	id="menu_$1"
+	name="${1/(^.)|([_])/\u$1(?2: )/g}"
+	groups="$2"
+	parent="$3"
+	sequence="$4"
+	/>
+$0
+endsnippet
+
+snippet ami "action menu item"
+<menuitem
+	id="menu_$1"
+	name="${1/(^.)|([_])/\u$1(?2: )/g}"
+	groups="$2"
+	parent="$3"
+	sequence="$4"
+	action="$5"
+	/>
+$0
+endsnippet
+
+# ACTIONS
+snippet act "action"
+<record id="action_$1" model="ir.actions.act_window">
+	<field name="name">${1/(^.)|([_])/\u$1(?2: )/g}</field>
+	<field name="res_model">${1/([_])/(?1:.)/g}</field>
+	<field name="view_type">form</field>
+	<field name="view_mode">tree,form$2</field>
+	$3
+</record>
+$0
+endsnippet

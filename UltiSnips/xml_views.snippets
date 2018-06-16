@@ -328,11 +328,12 @@ endsnippet
 
 snippet ug "user group"
 <record id="$1" model="res.groups">                                                              
-	<field name="name">${1/(^.)|([_])/\u$1(?2: )/g}</field>                                                     	<field name="category_id" ref="module_category_$3"/>
+	<field name="name">${1/(^.)|([_])/\u$1(?2: )/g}</field>
+	<field name="category_id" ref="module_category_$3"/>
 </record>
 endsnippet
 
-snippet iug "user group"
+snippet iug "user group with implied ids"
 <record id="$1" model="res.groups">                                                              
 	<field name="name">${1/(^.)|([_])/\u$1(?2: )/g}</field>
 	<field name="category_id" ref="module_category_$2"/>

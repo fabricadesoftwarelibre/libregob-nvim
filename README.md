@@ -158,9 +158,13 @@ En archivos xml:
 |wm2mk|widget many2many kanban|
 |wm2mb|widget many2many binary|
 |wx2mc|widget x2many counter|
-|rmi| menú principal|
-|smi| submenu|
-|act| acción básica|
+|rmi|menú principal|
+|smi|submenu|
+|ami|menú que ejecuta una acción|
+|act|acción básica|
+|uc|categoría de usuarios|
+|ug|grupo de usuarios|
+|iug|grupo de usuarios con ids implícitas|
 
 En archivos de python:
 

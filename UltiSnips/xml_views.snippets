@@ -2,13 +2,13 @@
 
 snippet tv "vista de lista" b
 <record id="$1_tree_view" model="ir.ui.view">
-    <field name="name">${1/([_])/(?1:.)/g}.tree.view</field>
-    <field name="model">${1/([_])/(?1:.)/g}</field>
-    <field name="arch" type="xml">
-        <tree string="${1/(^.)|([_])/\u$1(?2: )/g}"$2>
-            ${3:f}
-        </tree>
-    </field>
+	<field name="name">${1/([_])/(?1:.)/g}.tree.view</field>
+	<field name="model">${1/([_])/(?1:.)/g}</field>
+	<field name="arch" type="xml">
+		<tree string="${1/(^.)|([_])/\u$1(?2: )/g}"$2>
+			${3:f}
+		</tree>
+	</field>
 </record>
 $0
 endsnippet
@@ -32,40 +32,40 @@ endsnippet
 
 snippet fv "vista de formulario" b
 <record id="$1_form_view" model="ir.ui.view">
-    <field name="name">${1/([_])/(?1:.)/g}.form.view</field>
-    <field name="model">${1/([_])/(?1:.)/g}</field>
-    <field name="arch" type="xml">
-        <form string="${1/(^.)|([_])/\u$1(?2: )/g}"$2>
-            ${3:s}
+	<field name="name">${1/([_])/(?1:.)/g}.form.view</field>
+	<field name="model">${1/([_])/(?1:.)/g}</field>
+	<field name="arch" type="xml">
+		<form string="${1/(^.)|([_])/\u$1(?2: )/g}"$2>
+			${3:s}
 		</form>
-    </field>
+	</field>
 </record>
 $0
 endsnippet
 
 snippet sv "vista de búsqueda" b
 <record id="$1_search_view" model="ir.ui.view">
-    <field name="name">${1/([_])/(?1:.)/g}.search.view</field>
-    <field name="model">${1/([_])/(?1:.)/g}</field>
-    <field name="arch" type="xml">
-        <search string="${1/(^.)|([_])/\u$1(?2: )/g}"$2>
-            ${3:f}
-        </search>
-    </field>
+	<field name="name">${1/([_])/(?1:.)/g}.search.view</field>
+	<field name="model">${1/([_])/(?1:.)/g}</field>
+	<field name="arch" type="xml">
+		<search string="${1/(^.)|([_])/\u$1(?2: )/g}"$2>
+			${3:f}
+		</search>
+	</field>
 </record>
 $0
 endsnippet
 
 snippet cv "vista de calendario" b
 <record id="$1_calendar_view" model="ir.ui.view">
-    <field name="name">${1/([_])/(?1:.)/g}.calendar.view</field>
-    <field name="model">${1/([_])/(?1:.)/g}</field>
-    <field name="arch" type="xml">
-        <calendar string="${1/(^.)|([_])/\u$1(?2: )/g}"
-	    date_start="$2" color="$3"$4>
-            ${5:f}
-        </calendar>
-    </field>
+	<field name="name">${1/([_])/(?1:.)/g}.calendar.view</field>
+	<field name="model">${1/([_])/(?1:.)/g}</field>
+	<field name="arch" type="xml">
+		<calendar string="${1/(^.)|([_])/\u$1(?2: )/g}"
+			date_start="$2" color="$3"$4>
+			${5:f}
+		</calendar>
+	</field>
 </record>
 $0
 endsnippet
@@ -74,42 +74,42 @@ endsnippet
 
 snippet h "encabezado" b
 <header$1>
-    ${2:f}
+	${2:f}
 </header>
 $0
 endsnippet
 
 snippet fo "pié de página" b
 <footer$1>
-    ${2:ob}
+	${2:ob}
 </footer>
 $0
 endsnippet
 
 snippet s "hoja" b
 <sheet$1>
-    ${2:g}
+	${2:g}
 </sheet>
 $0
 endsnippet
 
 snippet g "grupo" b
 <group name="$1" string="${1/(^.)|([_])/\u$1(?2: )/g}"$2>
-    ${3:f}
+	${3:f}
 </group>
 $0
 endsnippet
 
 snippet n "libreta" b
 <notebook name="$1"$2>
-    ${3:p}
+	${3:p}
 </notebook>
 $0
 endsnippet
 
 snippet p "página" b
 <page name="$1" string="${1/(^.)|([_])/\u$1(?2: )/g}"$2>
-    ${3:g}
+	${3:g}
 </page>
 $0
 endsnippet
@@ -282,7 +282,7 @@ snippet rmi "root menu item"
 $0
 endsnippet
 
-snippet rmi "submenu item"
+snippet smi "submenu item"
 <menuitem
 	id="menu_$1"
 	name="${1/(^.)|([_])/\u$1(?2: )/g}"
@@ -315,4 +315,27 @@ snippet act "action"
 	$3
 </record>
 $0
+endsnippet
+
+snippet uc "user category"
+<record model="ir.module.category" id="module_category_$1">                                           
+	<field name="name">$2</field>                                                  
+	<field name="description">$3</field>            
+	<field name="sequence">$4</field>                                                                    
+</record>
+$0
+endsnippet
+
+snippet ug "user group"
+<record id="$1" model="res.groups">                                                              
+	<field name="name">${1/(^.)|([_])/\u$1(?2: )/g}</field>                                                     	<field name="category_id" ref="module_category_$3"/>
+</record>
+endsnippet
+
+snippet iug "user group"
+<record id="$1" model="res.groups">                                                              
+	<field name="name">${1/(^.)|([_])/\u$1(?2: )/g}</field>
+	<field name="category_id" ref="module_category_$2"/>
+	<field name="implied_ids" eval="[(4, ref('$3'))]"/>
+</record>
 endsnippet

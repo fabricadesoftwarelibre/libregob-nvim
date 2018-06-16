@@ -110,6 +110,7 @@ En archivos xml:
 |f|agrega un campo (field).|
 |ob|agrega un botón de tipo objeto (object button).|
 |ab|agrega un botón de tipo acción (action button).|
+|pt|password|
 |it|invisible|
 |rot|readonly|
 |nlt|nolabel|
@@ -135,6 +136,9 @@ En archivos xml:
 |wm2mk|widget many2many kanban|
 |wm2mb|widget many2many binary|
 |wx2mc|widget x2many counter|
+|rmi| menú principal|
+|smi| submenu|
+|act| acción básica|
 
 En archivos de python:
 

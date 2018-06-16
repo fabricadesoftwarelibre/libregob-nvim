@@ -32,6 +32,13 @@ Plug 'roxma/nvim-completion-manager'
 set shortmess+=c    
 imap <c-g> <Plug>(cm_force_refresh)
 
+" --- YouCompleteMe ---
+" 'roxma/nvim-completion-manager' se dejó de mantner en 04/2018
+" Reemplazar con YouCompleteMe si deja de funcionar.
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+" let g:ycm_min_num_of_chars_for_completion = 2
+" let g:ycm_auto_trigger = 1
+
 " Errores
 "Plug 'https://github.com/w0rp/ale.git' " Neomake and Syntastic replacement
 "let g:ale_lint_on_text_changed = 'never'
@@ -80,9 +87,11 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'unblevable/quick-scope'
 
 " Facil navegación
-Plug 'justinmk/vim-sneak'
+Plug 'easymotion/vim-easymotion'
 " https://github.com/haya14busa/incsearch.vim
-" https://github.com/easymotion/vim-easymotion
+
+" Mejor flujo en lenguajes identados, fold.
+Plug 'tweekmonster/braceless.vim'
 
 " STATUS BAR
 " Agrega una barra de estado mejorada. 
@@ -98,8 +107,9 @@ Plug 'majutsushi/tagbar'
 " Muestra marcas de identación.
 Plug 'Yggdroot/indentLine'
 
-" --- ACK ---
+" Busqueda recursiva en directorios ACK 
 Plug 'mileszs/ack.vim'
+
 
 " Indica que terminamos de instalar los plugins.
 call plug#end()
@@ -150,12 +160,10 @@ set confirm
 nnoremap <leader>F :execute 'edit' expand("%:p:h")<cr>
 
 " Cambiar el tamaño de la ventana con Ctrl+hjkl
-nnoremap <C-j> <C-w>+
-nnoremap <C-k> <C-w>-
-nnoremap <C-h> <C-w><
-nnoremap <C-l> <C-w>>
-
-
+nnoremap <C-left> <C-w>+
+nnoremap <C-up> <C-w>-
+nnoremap <C-down> <C-w>>
+nnoremap <C-right> <C-w><
 
 " Guardar como superusuario en el contenedor.
 " Mapea al usuario que levanto el servicio.
@@ -179,6 +187,8 @@ if &diff
     hi DiffChange ctermbg=white  guibg=#ececec gui=none   cterm=none
     hi DiffText   ctermfg=233  ctermbg=yellow  guifg=#000033 guibg=#DDDDFF gui=none cterm=none
 endif
+
+
 
 " --- NERDtree ---
 autocmd StdinReadPre * let s:std_in=1
@@ -209,6 +219,9 @@ nnoremap <silent> <c-m> :CtrlPMRU <CR>
 nnoremap <silent> <c-t> :CtrlPBufTag <CR>
 nnoremap <silent> <c-l> :CtrlPLine <CR>
 nnoremap <silent> <c-c> :CtrlPChangeAll <CR>
+
+" --- braceless ---
+autocmd FileType python,haml,yaml,coffee BracelessEnable +indent +fold
 
 
 " --- gitGutter ---
@@ -245,9 +258,9 @@ let g:ack_mappings = {
     \  'v':  '<C-W><CR><C-W>L<C-W>p<C-W>J<C-W>p',
     \ 'gv': '<C-W><CR><C-W>L<C-W>p<C-W>J' }
 
-" --- vim-sneak ---
-" Movimientos rápidos hacia adelante con s y atraz con S
-let g:sneak#label = 1
+" --- easymotion ---
+nmap s <Plug>(easymotion-overwin-f2)
+let g:EasyMotion_smartcase = 1
 
 " --- Airline ---
 let g:airline#extensions#tabline#enabled = 1
@@ -265,5 +278,4 @@ nnoremap <silent> <F9> :HeaderToggle <CR>
 
 " terryma/vim-multiple-cursors
 " neomake/neomake
-" brooth/far.vim
 

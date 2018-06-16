@@ -237,7 +237,7 @@ endsnippet
 
 # Compute 
 snippet comp "compute='_compute_x'"
-default="_compute_$1", 
+compute="_compute_$1", 
 endsnippet
 
 # Default
@@ -314,6 +314,13 @@ endsnippet
 snippet am "nueva fun decorada con api.multi" b
 @api.multi
 def $1(self):
+	for r in self:
+		$0
+endsnippet
+
+snippet amb "nuevo botón decorado con api.multi" b
+@api.multi
+def button_$1(self):
 	for r in self:
 		$0
 endsnippet

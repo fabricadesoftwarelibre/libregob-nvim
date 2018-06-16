@@ -13,7 +13,18 @@ Permite agilizar el desarrollo al incorporar atajos de escritura y a la vez faci
 La configuración más sencilla es agregar libregob-nvim como alias en nuestro equipo, en nuestro ejemplo estamos usando la palabra `edit`, pero usted puede reemplazarla por otra sin inconveniente.
 
 ```console
-foo@bar:~$ echo "alias edit='docker run -it --rm -v $(pwd):/src -e --workdir /src fabricadesoftwarelibre/libregob-nvim:18.1'" >>~/.bash_aliases
+foo@bar:~$ vim ~/.bash_aliases
+```
+
+Agregamos el alias al archivo:
+
+```
+alias edit='docker run -it --rm -v $(pwd):/src -e --workdir /src fabricadesoftwarelibre/libregob-nvim:18.1'
+```
+
+Y le indicamos al sistema que alimente la información recientemente ingresada.
+
+```console
 foo@bar:~$ source ~/.bash_aliases
 ```
 
@@ -42,11 +53,15 @@ Y agregamos el siguiente contenido al documento:
     mail = sucorreo@deusuariodeminka
 ```
 
-Una vez que hemos creado las carpetas y el archivo requerido para la persistencia, agregaremos el siguiente alias:
+Una vez abierto el archivo, pegamos nuestro alias:
 
-```console
-foo@bar:~$ echo "alias edit='docker run -it --rm -v $(pwd):/src -v ~/Docker/neovim/etc/gitconfig:/etc/gitconfig -v ~/Docker/neovim/config:/root/.config/nvim --workdir /src -t fabricadesoftwarelibre/libregob-nvim:18.1" >>~/.bash_aliases
-foo@bar:~$ source ~/.bash_aliases
+```
+edit='docker run -it --rm -v $(pwd):/src -v ~/Docker/neovim/etc/gitconfig:/etc/gitconfig -v ~/Docker/neovim/config:/root/.config/nvim --workdir /src -t fabricadesoftwarelibre/libregob-nvim:18.1"
+```
+Si deseamos tener acceso a todos nuestros archivos desde libregob-nvim, podemos agregar nuestro home a los volúmenes del contenedor.
+
+```
+edit='docker run -it --rm -v $(pwd):/src -v ~/:/home/ -v ~/Docker/neovim/etc/gitconfig:/etc/gitconfig -v ~/Docker/neovim/config:/root/.config/nvim --workdir /src -t fabricadesoftwarelibre/libregob-nvim:18.1"
 ```
 
 Una vez instalado, nos movilizamos al directorio que deseamos editar y ejecutamos `edit`, ingresaremos al directorio y podremos empezar a editar cualquier archivo.
@@ -60,6 +75,13 @@ foo@bar:~$ edit
 # Instrucciones de uso.
 
 ## Navegación y visualización.
+
+La navegación básica de vim:
+- `i` = editar.
+- `ESC` = dejar el modo edición.
+- `:x` = guardar y cerrar.
+- `:w` = guardar.
+- `:q` = salir.
 
 El navegar entre archivos, buscar líneas de código, abrir nuevos módulos, comparar información, movernos entre archivos abiertos y otras actividades similares consumen una importante parte de nuestro tiempo de desarrollo, por ello, es necesario utilizar atajos y opciones que nos permitan optimizar estas tareas.
 
@@ -218,7 +240,7 @@ Para utilizar los atajos debemos presionar la tecla de tabulador al finalizar el
 
 |Comando|Explicación|
 |---|---|
-|`i`| Entramos a modo de edisión de nvim.|
+|`i`| Entramos a modo de edición de nvim.|
 |`mm`|Nuestro atajo.|
 |`<TAB>`|Presionamos la tecla tabulador para expandir nuestro atajo.|
 

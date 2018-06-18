@@ -7,12 +7,12 @@
 " Avoid modify this section, unless you are very sure of what you are doing
 
 let vim_plug_just_installed = 0
-let vim_plug_path = expand('~/.config/nvim/autoload/plug.vim')
+let vim_plug_path = expand('/home/docker/.config/nvim/autoload/plug.vim')
 if !filereadable(vim_plug_path)
     echo "Installing Vim-plug..."
     echo ""
-    silent !mkdir -p ~/.config/nvim/autoload
-    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    silent !mkdir -p /home/docker/.config/nvim/autoload
+    silent !curl -fLo /home/docker/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     let vim_plug_just_installed = 1
 endif
 
@@ -25,7 +25,7 @@ endif
 " ============================================================================
 
 " Indica que empezamos a declarar nuestros plug-ins.
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('/home/docker/.config/nvim/plugged')
 
 " Autocompletado
 Plug 'roxma/nvim-completion-manager'
@@ -198,7 +198,7 @@ let NERDTreeIgnore = ['\.pyc$', '\.pyo$', '\.swo$', '\.swp$']
 
 " --- UltiSnips ---
 let g:UltiSnipsListSnippets="<c-tab>"
-let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/UltiSnips', 'UltiSnips']
+let g:UltiSnipsSnippetDirectories = ['/home/docker/.config/nvim/UltiSnips', 'UltiSnips']
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"

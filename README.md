@@ -170,7 +170,7 @@ En archivos de python:
 
 |Atajo|Acción|
 |-----|------|
-|pyfh|Agrega el encabezado para un archivo python.|
+|pyh|Agrega el encabezado para un archivo python.|
 |im|Importar models.|
 |imf|Importar models y fields.|
 |imfa|Importar models, fields y el api.|
@@ -237,7 +237,8 @@ En archivos de python:
 |supr|Aplicar super a una función y retornar res.|
 |=se| var\_obj = self.env['var']|
 |se| self.env['var']|
-|w|Agregar punto de depuración en wdb.|
+|w|Agregar punto de depuración en wdb, usar para iniciar el depurador en la línea.|
+|ws|Agregar punto de depuración en wdb, usar para que inicie el depurador en caso de encontrar una exepción.|
 |rue|Levanta un error de usuario.|
 
 Para utilizar los atajos debemos presionar la tecla de tabulador al finalizar el mismo, por ejemplo, para crear un nuevo modelo deberemos digitar `imm<TAB>`.

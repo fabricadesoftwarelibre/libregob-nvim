@@ -1,4 +1,76 @@
+# ENCABEZADO
+snippet xmlh "xml header"
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- PARTE DEL PROYECTO LIBREGOB -->
+<!-- LICENCIA AGPL-v3 -->
+<odoo>
+	$0
+</odoo>
+endsnippet
+
 # VISTAS
+snippet vam "views action menu" b
+<record id="$1_form_view" model="ir.ui.view">
+	<field name="name">${1/([_])/(?1:.)/g}.form.view</field>
+	<field name="model">${1/([_])/(?1:.)/g}</field>
+	<field name="arch" type="xml">
+		<form string="${1/(^.)|([_])/\u$1(?2: )/g}"$2>
+			<sheet>
+				<group>
+					<field name="$3"/>
+					<field name="$4"/>
+					<field name="$5"/>
+					${6:f}
+				</group>
+			</sheet>
+		</form>
+	</field>
+</record>
+
+<record id="$1_tree_view" model="ir.ui.view">
+	<field name="name">${1/([_])/(?1:.)/g}.tree.view</field>
+	<field name="model">${1/([_])/(?1:.)/g}</field>
+	<field name="arch" type="xml">
+		<tree string="${1/(^.)|([_])/\u$1(?2: )/g}"$7>
+			<field name="$3"/>
+			<field name="$4"/>
+			<field name="$5"/>
+			${8:f}
+		</tree>
+	</field>
+</record>
+
+<record id="$1_search_view" model="ir.ui.view">
+	<field name="name">${1/([_])/(?1:.)/g}.search.view</field>
+	<field name="model">${1/([_])/(?1:.)/g}</field>
+	<field name="arch" type="xml">
+		<search string="${1/(^.)|([_])/\u$1(?2: )/g}"$9>
+			<field name="$3"/>
+			<field name="$4"/>
+			<field name="$5"/>
+			${10:f}
+		</search>
+	</field>
+</record>
+
+<record id="action_$1" model="ir.actions.act_window">
+	<field name="name">${1/(^.)|([_])/\u$1(?2: )/g}</field>
+	<field name="res_model">${1/([_])/(?1:.)/g}</field>
+	<field name="view_type">form</field>
+	<field name="view_mode">tree,form$11</field>
+	$12
+</record>
+
+<menuitem
+	id="menu_$1"
+	name="${1/(^.)|([_])/\u$1(?2: )/g}"
+	groups="$13"
+	parent="$14"
+	sequence="$15"
+	action="action_$1"
+	/>
+$0
+endsnippet
 
 snippet tv "vista de lista" b
 <record id="$1_tree_view" model="ir.ui.view">
@@ -38,6 +110,23 @@ snippet fv "vista de formulario" b
 		<form string="${1/(^.)|([_])/\u$1(?2: )/g}"$2>
 			${3:s}
 		</form>
+	</field>
+</record>
+$0
+endsnippet
+
+snippet ifv "heredar una vista de formulario" b
+<record id="${1/^[^.]*./(?1: )/g}" model="ir.ui.view">
+	<field name="name">${1/([_])/(?1: )/g} $2 inherit</field>
+	<field name="model">$3</field>
+	<field name="inherit_id" ref="$1"/>
+	<field name="arch" type="xml">
+		<data>
+			<field name="$4"$5>
+				<field name="$6"$7/>
+				${8:}
+			</field>
+		</data>
 	</field>
 </record>
 $0
@@ -145,6 +234,10 @@ endsnippet
 
 snippet nlt "sin etiqueta"
 nolabel="1"
+endsnippet
+
+snippet fst "force save (guardar los datos en un onchange)"
+force_save="1"
 endsnippet
 
 # HERENCIAS.
@@ -318,23 +411,23 @@ $0
 endsnippet
 
 snippet uc "user category"
-<record model="ir.module.category" id="module_category_$1">                                           
-	<field name="name">$2</field>                                                  
-	<field name="description">$3</field>            
-	<field name="sequence">$4</field>                                                                    
+<record model="ir.module.category" id="module_category_$1">
+	<field name="name">${1/(^.)|([_])/\u$1(?2: )/g}</field>
+	<field name="description">${1/(^.)|([_])/\u$1(?2: )/g}</field> 
+	<field name="sequence">${2:10}</field>
 </record>
 $0
 endsnippet
 
 snippet ug "user group"
-<record id="$1" model="res.groups">                                                              
+<record id="$1" model="res.groups">
 	<field name="name">${1/(^.)|([_])/\u$1(?2: )/g}</field>
 	<field name="category_id" ref="module_category_$3"/>
 </record>
 endsnippet
 
 snippet iug "user group with implied ids"
-<record id="$1" model="res.groups">                                                              
+<record id="$1" model="res.groups">
 	<field name="name">${1/(^.)|([_])/\u$1(?2: )/g}</field>
 	<field name="category_id" ref="module_category_$2"/>
 	<field name="implied_ids" eval="[(4, ref('$3'))]"/>

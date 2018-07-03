@@ -115,27 +115,31 @@ Adicionalmente, con la ayuda de [vim-gitgutter](https://github.com/airblade/vim-
 [Ultisnips](https://github.com/SirVer/ultisnips) es nuestro principal aliado, con este complemento podemos utilizar atajos (snippets) para agilizar nuestra escritura, a continuación tenemos una lista de los atajos actualmente implementados:
 
 En archivos xml:
-
+### Vistas
 |Atajo|Acción|
 |-----|------|
-|tv|agrega una vista de lista (tree view).|
-|itv|hereda una vista de lista (tree view).|
-|fv|agrega una vista de formulario (form view).|
-|sv|agrega una vista de búsqueda o filtro (search view).|
-|cv|agrega una vista de calendario (calendar view).|
-|h|agrega un encabezado (header).|
-|fo|agrega un pié de página (footer).|
-|s|agrega una hoja (sheet).|
-|n|agrega una libreta (notebook).|
-|p|agrega una página (page).|
-|g|agrega un grupo (group).|
-|f|agrega un campo (field).|
-|ob|agrega un botón de tipo objeto (object button).|
-|ab|agrega un botón de tipo acción (action button).|
+|vam|vistas, acción y menú para un modelo|
+|xmlh|encabezado de archivo xml|
+|tv|agrega una vista de lista (tree view)|
+|itv|hereda una vista de lista (tree view)|
+|fv|agrega una vista de formulario (form view)|
+|ifv|hereda una vista de formulario (form view)|
+|sv|agrega una vista de búsqueda o filtro (search view)|
+|cv|agrega una vista de calendario (calendar view)|
+|h|agrega un encabezado (header)|
+|fo|agrega un pié de página (footer)|
+|s|agrega una hoja (sheet)|
+|n|agrega una libreta (notebook)|
+|p|agrega una página (page)|
+|g|agrega un grupo (group)|
+|f|agrega un campo (field)|
+|ob|agrega un botón de tipo objeto (object button)|
+|ab|agrega un botón de tipo acción (action button)|
 |pt|password|
 |it|invisible|
 |rot|readonly|
 |nlt|nolabel|
+|fst|force\_save|
 |xp|xpath|
 |xpf|xpath field|
 |xpb|xpath button|
@@ -165,6 +169,17 @@ En archivos xml:
 |uc|categoría de usuarios|
 |ug|grupo de usuarios|
 |iug|grupo de usuarios con ids implícitas|
+
+### Reportes
+|Atajo|Acción|
+|-----|------|
+|repd|Definición de reporte|
+|rept|Plantilla de reporte|
+|t|t|
+|ti|t-if|
+|te|t-esc|
+|te|t-field|
+|tfe|t-foreach|
 
 En archivos de python:
 

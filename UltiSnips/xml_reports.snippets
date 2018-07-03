@@ -1,0 +1,56 @@
+snippet repd "report declaration"
+<report
+	id="report_$1"
+	name="$2.report_$1_id"
+	model="$3"
+	string="${1/(^.)|([_])/\u$1(?2: )/g}"
+	file="$1"
+	report_type="${4:qweb-pdf}"
+	/>
+endsnippet
+
+snippet rept "report template"
+<template id="$1">
+	<t t-call="report.html_container">
+		<t t-foreach="docs" t-as="doc">
+			<div class="page">
+				<t t-call="$2"/>
+			</div>
+		</t>
+	</t>
+</template>
+endsnippet
+
+snippet t "t"
+<t>$1</t>
+$0
+endsnippet
+
+snippet ti "t-if"
+<t t-if="$1">
+	$2
+</t>
+$0
+endsnippet
+
+snippet te "t-esc"
+<t t-esc="$1">
+	$2
+</t>
+$0
+endsnippet
+
+snippet tf "t-field"
+<t t-field="$1">
+	$2
+</t>
+$0
+endsnippet
+
+
+snippet tfe "t-foreach"
+<t t-foreach="$1" t-as="$2">
+	$3
+</t>
+$0
+endsnippet

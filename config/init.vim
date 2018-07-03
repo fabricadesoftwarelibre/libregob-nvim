@@ -29,8 +29,6 @@ call plug#begin('/home/docker/.config/nvim/plugged')
 
 " Autocompletado
 Plug 'roxma/nvim-completion-manager'
-set shortmess+=c    
-imap <c-g> <Plug>(cm_force_refresh)
 
 " --- YouCompleteMe ---
 " 'roxma/nvim-completion-manager' se dejó de mantner en 04/2018
@@ -39,21 +37,8 @@ imap <c-g> <Plug>(cm_force_refresh)
 " let g:ycm_min_num_of_chars_for_completion = 2
 " let g:ycm_auto_trigger = 1
 
-" Errores
-"Plug 'https://github.com/w0rp/ale.git' " Neomake and Syntastic replacement
-"let g:ale_lint_on_text_changed = 'never'
-"let g:ale_lint_on_enter = 0
-"let g:ale_open_list = 1
-"let g:ale_completion_enabled = 0
-"let g:ale_sign_column_always = 1
-"let g:ale_linters = {'xml': ['xmllint']}
-"let g:ale_fixers = {'xml' : [ 'xmllint' ]}
-"let g:ale_linters = {'python': ['yapf']}
-"let g:ale_fixers = {'python' : [ 'yapf' ]}
-"let g:ale_fix_on_save = 0
-"let g:ale_sign_error = '>>'
-"let g:ale_sign_warning = '!!'
-
+" Lint de errores
+Plug 'https://github.com/w0rp/ale.git'
 
 " CSV
 Plug 'chrisbra/csv.vim'
@@ -107,9 +92,21 @@ Plug 'majutsushi/tagbar'
 " Muestra marcas de identación.
 Plug 'Yggdroot/indentLine'
 
-" Busqueda recursiva en directorios ACK 
-Plug 'mileszs/ack.vim'
+" Busqueda recursiva en directorios.
+Plug 'dyng/ctrlsf.vim'
+"Plug 'mileszs/ack.vim'
 
+" Navegación mejorada.
+Plug 'wellle/targets.vim'
+
+" Facilita agregar tags, util para xml.
+Plug 'tpope/vim-surround'
+
+" Mejora el comportamiento de . para repetir acciones.
+Plug 'tpope/vim-repeat'
+
+" Mejora el comportamiento de p y P ajustando la identación.
+" Plug 'sickill/vim-pasta'
 
 " Indica que terminamos de instalar los plugins.
 call plug#end()
@@ -120,7 +117,7 @@ call plug#end()
 if vim_plug_just_installed
     echo "Installing Bundles, please ignore key map error messages"
         :PlugInstall
-endif
+    endif
 
 " ============================================================================
 " Vim settings and mappings
@@ -159,10 +156,16 @@ set confirm
 " Select another file from the directory of the current one
 nnoremap <leader>F :execute 'edit' expand("%:p:h")<cr>
 
-" Cambiar el tamaño de la ventana con Ctrl+hjkl
-nnoremap <C-left> <C-w>+
+" Moverse entre ventanas con Control + hjkl
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+" Cambiar el tamaño de la ventana con control + teclas de dirección. 
+nnoremap <C-down> <C-w>+
 nnoremap <C-up> <C-w>-
-nnoremap <C-down> <C-w>>
+nnoremap <C-left> <C-w>>
 nnoremap <C-right> <C-w><
 
 " Guardar como superusuario en el contenedor.
@@ -188,7 +191,29 @@ if &diff
     hi DiffText   ctermfg=233  ctermbg=yellow  guifg=#000033 guibg=#DDDDFF gui=none cterm=none
 endif
 
+"--- 'w0rp/ale.vim' ---
+"let g:ale_statusline_format = ['☀️️ %d', '🕯️ %d', '']
+"nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+"nmap <silent> <C-j> <Plug>(ale_next_wrap)
+"let g:ale_lint_on_text_changed = 'never'
+"let g:ale_lint_on_enter = 0
+"let g:ale_open_list = 1
+"let g:ale_completion_enabled = 0
+"let g:ale_sign_column_always = 1
+"let g:ale_linters = {'xml': ['xmllint']}
+"let g:ale_fixers = {'xml' : [ 'xmllint' ]}
+"let g:ale_linters = {'python': ['yapf','autopep8','isort']}
+"let g:ale_fixers = {'python' : ['yapf','autopep8','isort']}
+"let g:ale_fix_on_save = 0
+"let g:airline#extensions#ale#enabled = 1
+"let g:ale_sign_error = '>>'
+"let g:ale_sign_warning = '!!'
 
+"--- 'roxma/nvim-completion-manager' ---
+set shortmess+=c    
+imap <c-g> <Plug>(cm_force_refresh)
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " --- NERDtree ---
 autocmd StdinReadPre * let s:std_in=1
@@ -214,11 +239,10 @@ let g:ctrlp_custom_ignore = {
   \ }
 let g:ctrlp_open_new_file = 'v'
 let g:ctrlp_open_multiple_files = '4ijr'
-nnoremap <silent> <c-b> :CtrlPBuffer <CR>
-nnoremap <silent> <c-m> :CtrlPMRU <CR>
-nnoremap <silent> <c-t> :CtrlPBufTag <CR>
-nnoremap <silent> <c-l> :CtrlPLine <CR>
-nnoremap <silent> <c-c> :CtrlPChangeAll <CR>
+nnoremap <silent> <CR> :CtrlPBuffer <CR>
+nnoremap <silent> <C-m> :CtrlPMRU <CR>
+nnoremap <silent> <C-t> :CtrlPBufTag <CR>
+nnoremap <silent> <C-b> :CtrlPLine <CR>
 
 " --- braceless ---
 autocmd FileType python,haml,yaml,coffee BracelessEnable +indent +fold
@@ -246,17 +270,17 @@ augroup END
 
 " --- ACK ---
 " Usar ag en lugar de ACK
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
+"if executable('ag')
+"  let g:ackprg = 'ag --vimgrep'
+"endif
 
-cnoreabbrev Ack Ack!
-nnoremap <Leader>a :Ack!<Space>
+"cnoreabbrev Ack Ack!
+"nnoremap <Leader>a :Ack!<Space>
 
 " evitar conflictos con NERDTree
-let g:ack_mappings = {
-    \  'v':  '<C-W><CR><C-W>L<C-W>p<C-W>J<C-W>p',
-    \ 'gv': '<C-W><CR><C-W>L<C-W>p<C-W>J' }
+"let g:ack_mappings = {
+"    \  'v':  '<C-W><CR><C-W>L<C-W>p<C-W>J<C-W>p',
+"    \ 'gv': '<C-W><CR><C-W>L<C-W>p<C-W>J' }
 
 " --- easymotion ---
 nmap s <Plug>(easymotion-overwin-f2)
@@ -268,13 +292,24 @@ let g:airline#extensions#tabline#enabled = 1
 " --- Tagbar ---
 "nnoremap <silent> <f10> :TagbarOpenAutoClose <CR>
 let g:tagbar_autoclose = 1
-nnoremap <silent> <f10> :TagbarToggle <CR>
+nnoremap <silent> <F8> :TagbarToggle <CR>
 
 " --- csv.vim ---
 let g:csv_highlight_column = 'y'
 let b:csv_headerline = 1
 nnoremap <silent> <F9> :HeaderToggle <CR>
 
+" --- CtrlFS ---
+nmap     <C-F>f <Plug>CtrlSFPrompt
+vmap     <C-F>f <Plug>CtrlSFVwordPath
+vmap     <C-F>F <Plug>CtrlSFVwordExec
+nmap     <C-F>n <Plug>CtrlSFCwordPath
+nmap     <C-F>p <Plug>CtrlSFPwordPath
+nnoremap <C-F>o :CtrlSFOpen<CR>
+nnoremap <C-F>t :CtrlSFToggle<CR>
+inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
+"nnoremap <F7> :CtrlSFToggle <CR>
+"nnoremap <C-f> :CtrlSF<Space>
 
 " terryma/vim-multiple-cursors
 " neomake/neomake

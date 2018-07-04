@@ -19,7 +19,7 @@ foo@bar:~$ vim ~/.bash_aliases
 Agregamos el alias al archivo:
 
 ```
-alias edit='docker run -it --rm -v $(pwd):/src -e --workdir /src fabricadesoftwarelibre/libregob-nvim:18.1'
+alias edit='docker run --rm -it -u $UID:1000 -v $(pwd):/src -w /src fabricadesoftwarelibre/libregob-nvim:18.1'
 ```
 
 Y le indicamos al sistema que alimente la información recientemente ingresada.

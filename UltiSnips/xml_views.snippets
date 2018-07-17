@@ -209,12 +209,20 @@ $0
 endsnippet
 
 snippet ob "botón de tipo objeto" b
-<button name="button_$1" string="${1/(^.)|([_])/\u$1(?2: )/g}" type="object"$2/>
+<button
+	name="button_$1"
+	string="${1/(^.)|([_])/\u$1(?2: )/g}"
+	type="object"
+	$2/>
 $0
 endsnippet
 
 snippet ab "botón de tipo action" b
-<button name="%(action_$1)d" string="${1/(^.)|([_])/\u$1(?2: )/g}" type="action"$2/>
+<button
+	name="%(action_$1)d"
+	string="${1/(^.)|([_])/\u$1(?2: )/g}"
+	type="action"
+	$2/>
 $0
 endsnippet
 
@@ -259,23 +267,23 @@ snippet xpg "xpath"
 </xpath>
 endsnippet
 
-snippet xpd "xpath"
+snippet xpd "xpath div"
 <xpath expr="//div[@class='$1']" $2>
 	$0
 </xpath>
 endsnippet
 
 snippet xpn "xpath"
-<xpath expr="//notebook[@name='$1']" position="inside">
-	<page string="$1" name="${1/(^.)|([_])/\u$1(?2: )/g}"/>
+<notebook position="inside">
+	<page string="$1" name="${1/(^.)|([_])/\u$1(?2: )/g}">
 		$0
 	</page>
-</xpath>
+</notebook>
 endsnippet
 
 snippet xpp "xpath"
 <xpath expr="//page[@name='$1']" $2>
-	<page string="$1" name="${1/(^.)|([_])/\u$1(?2: )/g}"/>
+	<page string="$1" name="${1/(^.)|([_])/\u$1(?2: )/g}">
 		$0
 	</page>
 </xpath>
@@ -299,16 +307,20 @@ endsnippet
 
 # ATRIBUTOS
 
-snippet at "atributos"
+snippet att "atributos"
 attrs="{$1}"
 endsnippet
 
-snippet aro "atributo read only"
-'readonly':[('$2','$2',$3)]
+snippet attr "atributo required"
+'required':[('$1','$2',$3)]
 endsnippet
 
-snippet ain "atributo read only"
-'invisible':[('$2','$2',$3)]
+snippet attro "atributo readonly"
+'readonly':[('$1','$2',$3)]
+endsnippet
+
+snippet atti "atributo invisible"
+'invisible':[('$1','$2',$3)]
 endsnippet
 
 # OPCIONES
@@ -330,6 +342,10 @@ endsnippet
 
 snippet nqc "no_quick_create"
 "no_quick_create": True$0
+endsnippet
+
+snippet eb "editable buttom"
+editable="buttom"$0
 endsnippet
 
 # WIDGETS
@@ -359,6 +375,10 @@ endsnippet
 
 snippet wx2mc "widget x2many_counter"
 widget="x2many_counter"$0
+endsnippet
+
+snippet wsb "widget statusbar"
+widget="statusbar"$0
 endsnippet
 
 # MENU ITEMS

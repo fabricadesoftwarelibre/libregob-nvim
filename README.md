@@ -137,9 +137,9 @@ En archivos xml:
 |ab|agrega un botón de tipo acción (action button)|
 |pt|password|
 |it|invisible|
-|rot|readonly|
-|nlt|nolabel|
-|fst|force\_save|
+|rot|readonly="1"|
+|nlt|nolabel="1"|
+|fst|force\_save="1"|
 |xp|xpath|
 |xpf|xpath field|
 |xpb|xpath button|
@@ -150,10 +150,15 @@ En archivos xml:
 |pa|position after|
 |pb|position before|
 |pr|position replace|
+|att|attributes|
+|attr|attribute required|
+|attro|attribute readonly|
+|atti|attribute invisible|
 |op|opciones|
 |nc|no create|
 |nce|no create edit|
 |nqc|no quick create|
+|eb|editable="buttom"|
 |no|no open|
 |ws|widget selection|
 |wm2m|widget many2many|
@@ -162,6 +167,7 @@ En archivos xml:
 |wm2mk|widget many2many kanban|
 |wm2mb|widget many2many binary|
 |wx2mc|widget x2many counter|
+|wsb|widget statusbar|
 |rmi|menú principal|
 |smi|submenu|
 |ami|menú que ejecuta una acción|
@@ -214,6 +220,8 @@ En archivos de python:
 |fs|Agrega un campo de selección con dos opciones.|
 |it|invisible=True|
 |if|invisible=False|
+|rt|required=True|
+|rf|required=False|
 |rot|readonly=True|
 |rof|readonly=False|
 |ct|copy=True|

@@ -179,8 +179,10 @@ En archivos xml:
 ### Reportes
 |Atajo|Acción|
 |-----|------|
-|repd|Definición de reporte|
-|rept|Plantilla de reporte|
+|rep|Base completa para un reporte qweb|
+|repd|Definición de reporte qweb|
+|repc|Plantilla de contenido de reporte qweb|
+|rept|Plantilla de reporte qweb|
 |t|t|
 |ti|t-if|
 |te|t-esc|

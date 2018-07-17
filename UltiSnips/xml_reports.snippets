@@ -9,12 +9,43 @@ snippet repd "report declaration"
 	/>
 endsnippet
 
+snippet repc "report content"
+<template id="report_$1_content">
+	$0
+</template>
+endsnippet
+
 snippet rept "report template"
-<template id="$1">
+<template id="report_$1_id">
 	<t t-call="report.html_container">
 		<t t-foreach="docs" t-as="doc">
 			<div class="page">
 				<t t-call="$2"/>
+			</div>
+		</t>
+	</t>
+</template>
+endsnippet
+
+snippet rep "complete report declarations"
+<report
+	id="report_$1"
+	name="$2.report_$1_id"
+	model="$3"
+	string="${1/(^.)|([_])/\u$1(?2: )/g}"
+	file="$1"
+	report_type="${4:qweb-pdf}"
+	/>
+
+<template id="report_$1_content">
+	$0
+</template>
+
+<template id="report_$1_id">
+	<t t-call="report.html_container">
+		<t t-foreach="docs" t-as="doc">
+			<div class="page">
+				<t t-call="$2.report_$1_content"/>
 			</div>
 		</t>
 	</t>

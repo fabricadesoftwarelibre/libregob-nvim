@@ -13,7 +13,7 @@ RUN apt-get install -y \
         curl exuberant-ctags git \
         silversearcher-ag
 
-RUN apt-get install -y python-pip python3-pip
+RUN apt-get install -y python3-pip
 
 RUN addgroup --gid 1000 docker && \
     adduser --uid 1000 --ingroup docker --home /home/docker --shell /bin/sh --disabled-password --gecos "" docker
@@ -27,10 +27,8 @@ RUN USER=docker && \
     printf "user: $USER\ngroup: $GROUP\n" > /etc/fixuid/config.yml
 
 USER docker:docker
-RUN pip2 install --user yapf jedi psutil setproctitle pep8 flake8 pyflakes pylint isort
 RUN pip3 install --user yapf jedi psutil setproctitle pep8 flake8 pyflakes pylint isort
 RUN pip3 install --user neovim==0.2.2
-RUN pip2 install --user neovim==0.2.2
 
 USER root:root
 RUN apt-get clean

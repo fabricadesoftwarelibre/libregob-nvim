@@ -65,19 +65,19 @@ $0
 endsnippet
 
 snippet te "t-esc"
-<t t-esc="$1">
-	$2
-</t>
+<t t-esc="$1"/>
+$0
+endsnippet
+
+snippet tr "t-raw"
+<t t-esc="$1"/>
 $0
 endsnippet
 
 snippet tf "t-field"
-<t t-field="$1">
-	$2
-</t>
+<t t-field="$1"/>
 $0
 endsnippet
-
 
 snippet tfe "t-foreach"
 <t t-foreach="$1" t-as="$2">
@@ -85,3 +85,9 @@ snippet tfe "t-foreach"
 </t>
 $0
 endsnippet
+
+snippet ts "t-set"
+<t t-set="$1" t-value="$2"/>
+$0
+endsnippet
+

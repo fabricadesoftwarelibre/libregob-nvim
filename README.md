@@ -186,8 +186,10 @@ En archivos xml:
 |t|t|
 |ti|t-if|
 |te|t-esc|
-|te|t-field|
+|tr|t-raw|
+|tf|t-field|
 |tfe|t-foreach|
+|ts|t-set|
 
 En archivos de python:
 

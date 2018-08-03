@@ -135,6 +135,7 @@ En archivos xml:
 |f|agrega un campo (field)|
 |ob|agrega un botón de tipo objeto (object button)|
 |ab|agrega un botón de tipo acción (action button)|
+|cb|agrega un botón de cancelar (special=cancel)|
 |pt|password|
 |it|invisible|
 |rot|readonly="1"|
@@ -151,9 +152,12 @@ En archivos xml:
 |pb|position before|
 |pr|position replace|
 |att|attributes|
-|attr|attribute required|
-|attro|attribute readonly|
-|atti|attribute invisible|
+|attr|atributo required|
+|attro|atributo readonly|
+|atti|atributo invisible|
+|ar|atributo required adicional|
+|aro|atributo readonly adicional|
+|ai|atributo invisible adicional|
 |op|opciones|
 |nc|no create|
 |nce|no create edit|
@@ -206,10 +210,12 @@ En archivos de python:
 |irw|Importar RedirectWarning.|
 |ilog|Importar logging.|
 |idp|Importar la presición decimal.|
-|mm|Nuevo modelo.|
-|imm|Heredar modelo.|
-|tm|Nuevo wizard.|
-|itm|Heredar wizard.|
+|mm|Nuevo models.Model|
+|mt|Nuevo models.TransientModel|
+|ma|Nuevo models.AbstractModel|
+|mmi|Nuevo modelo con herencia|
+|imm|Heredar modelo|
+|imt|Heredar wizard|
 |fc|Agregar un campo Char.|
 |ft|Agrega un campo Text.|
 |fi|Agrega un campo Integer.|
@@ -244,29 +250,37 @@ En archivos de python:
 |domt|dominio verdadero|
 |dom|dominio editable|
 |comp|compute a fórmula '\_compute\_$1"|
-|defc|default a fórmula \_compute\_$1"|
-|deft|default=True|
-|deff|default=False|
-|def0|default=0|
-|defu|default relativo al usuario|
+|d|default a fórmula \_default\_$1"|
+|dt|default=True|
+|df|default=False|
+|d0|default=0|
+|du|default relativo al usuario|
+|dc|default relativo a la compañía|
 |tva|track\_visibility='always'|
 |tvo|track\_visibility='onchange'|
 |tt|translate=True|
 |tf|translate=False|
 |srt|campo de solo lectura en estado $1|
 |sdrf|campo de solo lectura editable en borrador|
-|aoc|nueva fun decorada con api.onchange|
 |aocrdom|retornar un dominio a través de un onchange|
+|aoc|nueva fun decorada con api.onchange|
+|am|nueva función decorada con api.multi|
+|amb|nuevo botón decorado con api.multi|
 |ad|nueva fun decorada con api.depends|
-|filter|aplicar filter a un recordset|
-|search|aplicar search a un recordset|
-|sup|Aplicar super a una función y trabajar sobre res.|
-|supr|Aplicar super a una función y retornar res.|
+|sup|Aplicar super a una función y trabajar sobre res|
+|supr|Aplicar super a una función y retornar res|
+|fil|aplicar filter a un recordset|
+|sea|aplicar search a un recordset|
 |=se| var\_obj = self.env['var']|
 |se| self.env['var']|
 |w|Agregar punto de depuración en wdb, usar para iniciar el depurador en la línea.|
-|ws|Agregar punto de depuración en wdb, usar para que inicie el depurador en caso de encontrar una exepción.|
-|rue|Levanta un error de usuario.|
+|ws|Agregar punto de depuración en wdb, usar para que inicie el depurador en caso de encontrar una exepción|
+|rue|Levanta un error de usuario|
+|dm|nuevo miembro de un diccionario|
+|odm|nuevo miembro de un OrderedDict|
+|sm|nuevo miembro de una selección|
+|domm|nuevo miembro de un dominio|
+
 
 Para utilizar los atajos debemos presionar la tecla de tabulador al finalizar el mismo, por ejemplo, para crear un nuevo modelo deberemos digitar `imm<TAB>`.
 

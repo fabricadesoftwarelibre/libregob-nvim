@@ -213,7 +213,7 @@ snippet ob "botón de tipo objeto" b
 	name="button_$1"
 	string="${1/(^.)|([_])/\u$1(?2: )/g}"
 	type="object"
-	$2/>
+	${2:}/>
 $0
 endsnippet
 
@@ -222,7 +222,17 @@ snippet ab "botón de tipo action" b
 	name="%(action_$1)d"
 	string="${1/(^.)|([_])/\u$1(?2: )/g}"
 	type="action"
-	$2/>
+	${2:}/>
+$0
+endsnippet
+
+snippet cb "botón de cancelar" b
+<button
+	name="Cancel"
+	string="Cancel"
+	special="cancel"
+	class="btn-default"
+	/>
 $0
 endsnippet
 
@@ -312,15 +322,27 @@ attrs="{$1}"
 endsnippet
 
 snippet attr "atributo required"
-'required':[('$1','$2',$3)]
+attrs="{'required':[('$1','${2:=}',${3:True})]$4}"$0
 endsnippet
 
 snippet attro "atributo readonly"
-'readonly':[('$1','$2',$3)]
+attrs="{'readonly':[('$1','${2:=}',${3:True})]$4}"$0
 endsnippet
 
 snippet atti "atributo invisible"
-'invisible':[('$1','$2',$3)]
+attrs="{'invisible':[('$1','${2:!=}',${3:True})]$4}"$0
+endsnippet
+
+snippet ar "atributo adicional required"
+, 'required':[('$1','${2:=}',${3:True})]
+endsnippet
+
+snippet aro "atributo adicional readonly"
+, 'readonly':[('$1','${2:=}',${3:True})]
+endsnippet
+
+snippet ai "atributo adicional invisible"
+, 'invisible':[('$1','${2:!=}',${3:True})]
 endsnippet
 
 # OPCIONES

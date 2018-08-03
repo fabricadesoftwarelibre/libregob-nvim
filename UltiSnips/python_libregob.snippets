@@ -20,17 +20,17 @@ endsnippet
 # Inherit Model
 snippet imm "heredar un modelo"
 class $1(models.Model):
-    _inherit = '${1/([a-z]*)([A-Z]+)/(?1:$1.)\L$2\E/g}'
+	_inherit = '${1/([a-z]*)([A-Z]+)/(?1:$1.)\L$2\E/g}'
 
-    $0
+	$0
 endsnippet
 
 # Inherit TransientModel
 snippet imt "heredar un wizard"
 class $1(models.TransientModel):
-    _inherit = '${1/([a-z]*)([A-Z]+)/(?1:$1.)\L$2\E/g}'
+	_inherit = '${1/([a-z]*)([A-Z]+)/(?1:$1.)\L$2\E/g}'
 
-    $0
+	$0
 endsnippet
 
 # New Model
@@ -43,9 +43,29 @@ class $1(models.Model):
 	$0
 endsnippet
 
+
+# New Model with inheritance
+snippet mmi "nuevo modelo con herencia"
+class $1(models.Model):
+	_name = '${1/([a-z]*)([A-Z]+)/(?1:$1.)\L$2\E/g}'
+	_description = '${1/(.)([A-Z]+)/(?1:$1)(?1: $2)/g}' 
+	_inherit = '$2'
+
+	$0
+endsnippet
+
 # New TransientModel
-snippet mt "nuevo wizard"
+snippet mt "nuevo TransientModel"
 class $1(models.TransientModel):
+	_name = '${1/([a-z]*)([A-Z]+)/(?1:$1.)\L$2\E/g}' 
+	_description = '${1/(.)([A-Z]+)/(?1:$1)(?1: $2)/g}' 
+
+	$0
+endsnippet
+
+# New AbstractModel
+snippet ma "nuevo AbstractModel"
+class $1(models.AbstractModel):
 	_name = '${1/([a-z]*)([A-Z]+)/(?1:$1.)\L$2\E/g}' 
 	_description = '${1/(.)([A-Z]+)/(?1:$1)(?1: $2)/g}' 
 
@@ -217,58 +237,67 @@ endsnippet
 
 # Help
 snippet h1 "help con una línea"
-help="$1", 
+help="$1", $0 
 endsnippet
 
 snippet h2 "help con dos líneas"
 help=" * $1.\n"
-	" * $2.\n"
+	" * $2.\n", $0
 endsnippet
 
 snippet h3 "help con tres líneas"
 help=" * $1.\n"
 	" * $2.\n"
-	" * $3.\n"
+	" * $3.\n", $0
 endsnippet
 
 # Domain
 snippet domf "dominio falso"
-domain=[('$1', '=', False)], 
+domain=[('$1', '=', False)], $0 
 endsnippet
 
 snippet domt "dominio verdadero"
-domain=[('$1', '!=', False)], 
+domain=[('$1', '!=', False)], $0 
 endsnippet
 
 snippet dom "dominio editable"
-domain=[('$1', '$2', $3)], 
+domain=[('$1', '$2', $3)], $0 
 endsnippet
 
 # Compute 
 snippet comp "compute='_compute_x'"
-compute="_compute_$1", 
+compute="_compute_$1", $0 
 endsnippet
 
 # Default
-snippet defc "default='_compute_x'"
-default="_compute_$1", 
+snippet d "default='_default_x'"
+default="_default_$1", $0 
 endsnippet
 
-snippet deft "default=True"
-default=True, 
+snippet dt "default=True"
+default=True, $0 
 endsnippet
 
-snippet deff "default=False"
-default=False, 
+snippet df "default=False"
+default=False, $0 
 endsnippet
 
-snippet def0 "default=0"
-default=0, 
+snippet d0 "default=0"
+default=0, $0 
 endsnippet
 
-snippet defu "default relativo al usuario"
-default=lambda self: self.env.user$1, 
+snippet du "default relativo al usuario"
+default=lambda self: self.env.user$1, $0
 endsnippet
+
+snippet dc "default relativo la compañía"
+default=lambda self: self.env.user.company_id$1, $0
+endsnippet
+
+snippet dn "default now"
+default=fields.Datetime.now(),$0
+endsnippet
+
 
 # Track visibility
 snippet tva "track_visibility='always'"
@@ -433,13 +462,36 @@ endsnippet
 
 # OPERACIONES SOBRE RECORDSETS
 snippet fil "aplicar filter a un recordset" i
-filtered(lamda r: r.$1)
+filtered(lambda r: r.$1)
 endsnippet
 
 snippet sea "aplicar search a un recordset" i
 search([('$1', '$2', '$3')])
 endsnippet
 
+# ERRORS
 snippet rue "error de usuario"
 raise UserError(_("$1"))
 endsnippet
+
+# MEMBERS
+
+snippet dm "miembro de un diccionario"
+'$1': $2,
+$0
+endsnippet
+
+snippet odm "miembro de un OrderedDict"
+('$1', $2),
+$0
+endsnippet
+
+snippet sm "miembro de una selección"
+('$1','${1/(^.)|([_])/\u$1(?2: )/g}'),
+$0
+endsnippet
+
+snippet domm "miembro de un dominio"
+('$1','$2','$3'),$0
+endsnippet
+
